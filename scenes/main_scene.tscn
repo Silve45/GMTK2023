@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://csi4qqxwojof8"]
+
+[ext_resource type="Script" path="res://assets/scripts/gameCamera.gd" id="1_ay4xj"]
+[ext_resource type="Script" path="res://assets/scripts/CircleScene.gd" id="2_0m1as"]
+[ext_resource type="Texture2D" uid="uid://coejmsd3aaaua" path="res://assets/sprites/circle.PNG" id="2_ba67w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0mtm"]
+radius = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3c6pc"]
+radius = 18.1108
+
+[node name="MainScene" type="Node2D"]
+
+[node name="gameCamera" type="Camera2D" parent="."]
+position = Vector2(576, 325)
+script = ExtResource("1_ay4xj")
+backgroundColor = Color(0.0823529, 0.0823529, 0.0823529, 1)
+
+[node name="CircleScene" type="CharacterBody2D" parent="."]
+position = Vector2(533, 535)
+script = ExtResource("2_0m1as")
+xVelocity = 500
+yVelocity = 500
+
+[node name="Sprite2D" type="Sprite2D" parent="CircleScene"]
+position = Vector2(9.53674e-07, -5.96046e-07)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_ba67w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CircleScene"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_p0mtm")
+
+[node name="DeathShape" type="Area2D" parent="CircleScene"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CircleScene/DeathShape"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_3c6pc")
