@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://doih05u7v53bt"]
+
+[ext_resource type="Script" path="res://assets/scripts/Spinner.gd" id="1_3d0iq"]
+[ext_resource type="Texture2D" uid="uid://dtc3sa5vx2h7o" path="res://assets/sprites/blocks.PNG" id="2_my72r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmjv7"]
+size = Vector2(64, 22)
+
+[node name="Spinner" type="Node2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_3d0iq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2(1, 0.359375)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("2_my72r")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+scale = Vector2(1, 2.78261)
+shape = SubResource("RectangleShape2D_jmjv7")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

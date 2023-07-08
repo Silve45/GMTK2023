@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://crgbu3wmg1jmp"]
+
+[ext_resource type="Script" path="res://assets/scripts/movingWall.gd" id="1_bbrpy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nux7o"]
+size = Vector2(13, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to43t"]
+size = Vector2(1172, 16.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kis5m"]
+size = Vector2(12, 648)
+
+[node name="movingWall" type="CharacterBody2D"]
+position = Vector2(390, 234)
+collision_layer = 2
+collision_mask = 5
+platform_on_leave = 2
+script = ExtResource("1_bbrpy")
+speed = 400
+
+[node name="leftCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 324)
+shape = SubResource("RectangleShape2D_nux7o")
+
+[node name="rightCollision" type="CollisionShape2D" parent="."]
+position = Vector2(1157, 324)
+shape = SubResource("RectangleShape2D_nux7o")
+
+[node name="topCollision" type="CollisionShape2D" parent="."]
+position = Vector2(576, -4.5)
+shape = SubResource("RectangleShape2D_to43t")
+
+[node name="bottomCollision" type="CollisionShape2D" parent="."]
+position = Vector2(576, 652.5)
+shape = SubResource("RectangleShape2D_to43t")
+
+[node name="stopArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="leftCollision" type="CollisionShape2D" parent="stopArea"]
+position = Vector2(-4, 324)
+shape = SubResource("RectangleShape2D_kis5m")
+
+[node name="rightCollision" type="CollisionShape2D" parent="stopArea"]
+position = Vector2(1155.5, 324)
+shape = SubResource("RectangleShape2D_nux7o")
+
+[node name="topCollision" type="CollisionShape2D" parent="stopArea"]
+position = Vector2(565, -2.25)
+shape = SubResource("RectangleShape2D_to43t")
+
+[node name="bottomCollision" type="CollisionShape2D" parent="stopArea"]
+position = Vector2(576, 651)
+shape = SubResource("RectangleShape2D_to43t")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://btnlroiikcuyh"]
+
+[ext_resource type="Script" path="res://assets/scripts/block.gd" id="1_wkl22"]
+[ext_resource type="Texture2D" uid="uid://dtc3sa5vx2h7o" path="res://assets/sprites/blocks.PNG" id="2_j8tvx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68hl5"]
+size = Vector2(64, 64)
+
+[node name="Block" type="Node2D"]
+modulate = Color(0.388235, 0.607843, 1, 1)
+scale = Vector2(2.5, 1)
+script = ExtResource("1_wkl22")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("2_j8tvx")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+shape = SubResource("RectangleShape2D_68hl5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="canPlaceArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="canPlaceArea"]
+visible = false
+shape = SubResource("RectangleShape2D_68hl5")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,165 @@
+[gd_scene load_steps=11 format=3 uid="uid://lsdj6sta2mwe"]
+
+[ext_resource type="Texture2D" uid="uid://dtc3sa5vx2h7o" path="res://assets/sprites/blocks.PNG" id="1_3hmpn"]
+[ext_resource type="Script" path="res://assets/scripts/hurtBlock.gd" id="1_iwoxw"]
+
+[sub_resource type="Curve" id="Curve_xrkds"]
+_data = [Vector2(0.012931, 1), 0.0, 0.0, 0, 0, Vector2(0.74569, 0.726316), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_xrp48"]
+colors = PackedColorArray(0.901961, 0.305882, 0.207843, 0.513726, 0.901961, 0.305882, 0.207843, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68hl5"]
+size = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_ubd3h"]
+resource_name = "blockIn"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2.7, 2.7), Vector2(2.5, 2.5)]
+}
+
+[sub_resource type="Animation" id="Animation_htgjr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.5, 2.5)]
+}
+
+[sub_resource type="Animation" id="Animation_2bvh5"]
+resource_name = "blockOut"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.5, 2.5), Vector2(2.7, 2.7), Vector2(0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_gone"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ilujg"]
+resource_name = "blockOn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.5, 2.5), Vector2(2.7, 2.7), Vector2(2.5, 2.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m3vx0"]
+_data = {
+"RESET": SubResource("Animation_htgjr"),
+"blockIn": SubResource("Animation_ubd3h"),
+"blockOn": SubResource("Animation_ilujg"),
+"blockOut": SubResource("Animation_2bvh5")
+}
+
+[node name="Block" type="Node2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_iwoxw")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+scale = Vector2(1, 1)
+emitting = false
+amount = 12
+speed_scale = 2.0
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 4.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 75.0
+initial_velocity_max = 100.0
+scale_amount_min = 4.0
+scale_amount_max = 20.0
+scale_amount_curve = SubResource("Curve_xrkds")
+color_ramp = SubResource("Gradient_xrp48")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+modulate = Color(0.901961, 0.305882, 0.207843, 1)
+texture = ExtResource("1_3hmpn")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_68hl5")
+
+[node name="onTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="awayTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -12.4
+offset_top = -27.2
+offset_right = 112.6
+offset_bottom = 248.8
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 200
+text = "t"
+
+[node name="canPlaceArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="canPlaceArea"]
+visible = false
+shape = SubResource("RectangleShape2D_68hl5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m3vx0")
+}
+
+[connection signal="timeout" from="onTimer" to="." method="_on_on_timer_timeout"]
+[connection signal="timeout" from="awayTimer" to="." method="_on_away_timer_timeout"]

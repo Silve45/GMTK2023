@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr2ks5alc6476"]
+
+[ext_resource type="Script" path="res://assets/scripts/InvinsibleBorderWall.gd" id="1_aj2cp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nux7o"]
+size = Vector2(10, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to43t"]
+size = Vector2(1172, 9)
+
+[node name="oldWall" type="Node2D"]
+position = Vector2(2112, 504)
+script = ExtResource("1_aj2cp")
+
+[node name="leftBody" type="StaticBody2D" parent="."]
+
+[node name="leftCollision" type="CollisionShape2D" parent="leftBody"]
+position = Vector2(-5, 324)
+shape = SubResource("RectangleShape2D_nux7o")
+
+[node name="rightBody" type="StaticBody2D" parent="."]
+
+[node name="rightCollision" type="CollisionShape2D" parent="rightBody"]
+position = Vector2(1157, 324)
+shape = SubResource("RectangleShape2D_nux7o")
+
+[node name="topBody" type="StaticBody2D" parent="."]
+
+[node name="topCollision" type="CollisionShape2D" parent="topBody"]
+position = Vector2(576, -4.5)
+shape = SubResource("RectangleShape2D_to43t")
+
+[node name="bottomBody" type="StaticBody2D" parent="."]
+
+[node name="bottomCollision" type="CollisionShape2D" parent="bottomBody"]
+position = Vector2(576, 652.5)
+shape = SubResource("RectangleShape2D_to43t")
