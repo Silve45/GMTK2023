@@ -1,17 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://lsdj6sta2mwe"]
+[gd_scene load_steps=12 format=3 uid="uid://bp6xt6d8l8q2s"]
 
-[ext_resource type="Texture2D" uid="uid://dtc3sa5vx2h7o" path="res://assets/sprites/blocks.PNG" id="1_3hmpn"]
-[ext_resource type="Script" path="res://assets/scripts/hurtBlock.gd" id="1_iwoxw"]
+[ext_resource type="Script" path="res://assets/scripts/pointBlock.gd" id="1_6ari2"]
+[ext_resource type="Texture2D" uid="uid://dtc3sa5vx2h7o" path="res://assets/sprites/blocks.PNG" id="2_r2j4s"]
 
 [sub_resource type="Curve" id="Curve_xrkds"]
 _data = [Vector2(0.012931, 1), 0.0, 0.0, 0, 0, Vector2(0.74569, 0.726316), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_xrp48"]
-colors = PackedColorArray(0.901961, 0.305882, 0.207843, 0.513726, 0.901961, 0.305882, 0.207843, 1)
+colors = PackedColorArray(0.968627, 0.780392, 0.337255, 0.533333, 0.968627, 0.780392, 0.337255, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68hl5"]
 size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o157c"]
+size = Vector2(66.8, 67.2)
 
 [sub_resource type="Animation" id="Animation_htgjr"]
 length = 0.001
@@ -98,12 +101,11 @@ _data = {
 "blockOut": SubResource("Animation_2bvh5")
 }
 
-[node name="Block" type="Node2D"]
+[node name="pointBlock" type="Node2D"]
 scale = Vector2(2.5, 2.5)
-script = ExtResource("1_iwoxw")
+script = ExtResource("1_6ari2")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-visible = false
 emitting = false
 amount = 12
 speed_scale = 2.0
@@ -120,12 +122,12 @@ scale_amount_curve = SubResource("Curve_xrkds")
 color_ramp = SubResource("Gradient_xrp48")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 8
+collision_layer = 16
 collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-modulate = Color(0.901961, 0.305882, 0.207843, 1)
-texture = ExtResource("1_3hmpn")
+modulate = Color(0.968627, 0.780392, 0.337255, 1)
+texture = ExtResource("2_r2j4s")
 hframes = 2
 vframes = 2
 
@@ -141,6 +143,9 @@ one_shot = true
 wait_time = 0.1
 one_shot = true
 
+[node name="deadTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="Label" type="Label" parent="."]
 offset_left = -12.4
 offset_top = -27.2
@@ -150,12 +155,14 @@ scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 200
 text = "t"
 
-[node name="canPlaceArea" type="Area2D" parent="."]
-collision_layer = 8
+[node name="hurtArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="canPlaceArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtArea"]
 visible = false
-shape = SubResource("RectangleShape2D_68hl5")
+position = Vector2(0.200003, 0.400003)
+shape = SubResource("RectangleShape2D_o157c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -164,3 +171,5 @@ libraries = {
 
 [connection signal="timeout" from="onTimer" to="." method="_on_on_timer_timeout"]
 [connection signal="timeout" from="awayTimer" to="." method="_on_away_timer_timeout"]
+[connection signal="timeout" from="deadTimer" to="." method="_on_dead_timer_timeout"]
+[connection signal="body_entered" from="hurtArea" to="." method="_on_hurt_area_body_entered"]

@@ -26,7 +26,7 @@ func _process(delta):
 	_mouse_position()
 	_block_mouse()
 	_canPlace()
-	canPlace = canPlaceArea.has_overlapping_bodies()
+	canPlace = canPlaceArea.has_overlapping_bodies()# || canPlaceArea.has_overlapping_areas()
 
 
 func _mouse_position():

@@ -1,7 +1,10 @@
 extends Node2D
+
 @onready var collisionShape = $StaticBody2D/CollisionShape2D
+@onready var hurtAreaShape = $hurtArea/CollisionShape2D
 @onready var onTimer = $onTimer
 @onready var awayTimer = $awayTimer
+@onready var deadTimer = $deadTimer
 @onready var sprite = $StaticBody2D/Sprite2D
 @onready var animationPlayer = $AnimationPlayer
 @onready var particles = $CPUParticles2D
@@ -20,7 +23,7 @@ func _get_random_position():
 	position.y = rndY
 	
 	var rng2 = RandomNumberGenerator.new()
-	goAwayTime = rng2.randi_range(2, 5)
+	goAwayTime = 3
 	print(goAwayTime)
 	awayTimer.wait_time = goAwayTime
 	animationPlayer.play("blockIn")
@@ -39,17 +42,27 @@ func _setTimer():
 		label.set_text(str(int(awayTimer.time_left)))
 
 func _not_placed():
-	sprite.modulate = "e64e3527"
+	hurtAreaShape.disabled = true
+	sprite.modulate = "f7c75631"
 	collisionShape.disabled = true
 	onTimer.start()
 
 func _placed():
+	hurtAreaShape.disabled = false
 	animationPlayer.play("blockOn")
-	particles.emitting = true
-	particles.one_shot = true
-	sprite.modulate = "e64e35"
+	sprite.modulate = "f7c756"
 	collisionShape.disabled = false
 	timerSwitch = true
+
+func _destroyed():
+	Globals.score += 10
+	sprite.visible = false
+	label.visible = false
+	hurtAreaShape.call_deferred("set_disabled", true)
+	collisionShape.call_deferred("set_disabled", true)
+	particles.emitting = true
+	particles.one_shot = true
+	deadTimer.start()
 
 func _gone():
 	queue_free() #add animation here
@@ -64,3 +77,10 @@ func _on_away_timer_timeout():
 	collisionShape.disabled = true
 	animationPlayer.play("blockOut")
 
+
+func _on_hurt_area_body_entered(body):
+	_destroyed()
+
+
+func _on_dead_timer_timeout():
+	queue_free()

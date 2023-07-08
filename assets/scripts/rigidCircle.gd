@@ -113,4 +113,5 @@ func _dead():
 
 func _on_death_timer_timeout():
 	queue_free()
+	Globals.dead = true
 	#death thing here
