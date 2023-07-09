@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxklt8usixud2"]
+[gd_scene load_steps=8 format=3 uid="uid://dxklt8usixud2"]
 
 [ext_resource type="Script" path="res://assets/scripts/rigidCircle.gd" id="1_0rprb"]
 [ext_resource type="Texture2D" uid="uid://coejmsd3aaaua" path="res://assets/sprites/circle.PNG" id="2_ad33x"]
@@ -16,6 +16,9 @@ radius = 81.0555
 [sub_resource type="Curve" id="Curve_fes03"]
 _data = [Vector2(0.012931, 1), 0.0, 0.0, 0, 0, Vector2(0.74569, 0.726316), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8twjr"]
+radius = 83.0542
 
 [node name="rigidCircle" type="RigidBody2D"]
 position = Vector2(684, 410)
@@ -66,6 +69,17 @@ scale_amount_curve = SubResource("Curve_fes03")
 [node name="deathTimer" type="Timer" parent="CPUParticles2D"]
 one_shot = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="soundBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="soundBox"]
+position = Vector2(-7, -6)
+shape = SubResource("CircleShape2D_8twjr")
+
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="hurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="timeout" from="CPUParticles2D/deathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="body_entered" from="soundBox" to="." method="_on_sound_box_body_entered"]

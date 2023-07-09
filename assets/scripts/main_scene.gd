@@ -23,6 +23,7 @@ var hurtBlock = "res://scenes/hazards/hurtBlock.tscn"
 var coinBlock = "res://scenes/blocks/pointBlock.tscn"
 
 func _ready():
+	MusicController._play_song(1)
 	Globals._reset()
 	_spawn_hurt_block()
 	_spawn_point_block()
@@ -33,12 +34,19 @@ func _process(delta):
 	var mouseLocation = str(mouseX, ": ", mouseY)
 	label.set_text(mouseLocation)
 	#end mouse stuff
-	
+	_stop_song()#stops song at end
 	if Globals.dead == false:
 		_choosenBlock()
 		_block_track()
 		_maxHurtBlock()
 		_pause()
+
+func _stop_song():
+	if Globals.dead == false:
+		pass
+	else:
+		MusicController._stop_music()
+
 
 func _pause():
 	if Input.is_action_just_pressed("pause"):
@@ -64,7 +72,7 @@ func _block_track():
 
 
 func _input(event):
-	if event.is_action_pressed("addClick") and add != null:
+	if event.is_action_pressed("addClick") and add != null and Globals.dead == false:
 		add._placed()
 		
 

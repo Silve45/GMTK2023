@@ -132,7 +132,6 @@ hframes = 2
 vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
 shape = SubResource("RectangleShape2D_68hl5")
 
 [node name="onTimer" type="Timer" parent="."]
@@ -168,6 +167,8 @@ shape = SubResource("RectangleShape2D_o157c")
 libraries = {
 "": SubResource("AnimationLibrary_m3vx0")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="timeout" from="onTimer" to="." method="_on_on_timer_timeout"]
 [connection signal="timeout" from="awayTimer" to="." method="_on_away_timer_timeout"]

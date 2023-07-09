@@ -9,6 +9,8 @@ extends Node2D
 @onready var animationPlayer = $AnimationPlayer
 @onready var particles = $CPUParticles2D
 @onready var label = $Label
+@onready var soundEffect = $AudioStreamPlayer
+
 var screenSize = null 
 var goAwayTime
 var timerSwitch = false
@@ -55,6 +57,9 @@ func _placed():
 	timerSwitch = true
 
 func _destroyed():
+	var sound = load("res://assets/soundEffects/pointBreakSound.wav")
+	soundEffect.stream = sound
+	soundEffect.play()
 	Globals.score += 10
 	sprite.visible = false
 	label.visible = false

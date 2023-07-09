@@ -2,6 +2,7 @@ extends Node2D
 @onready var timer = $Timer
 @onready var collisionShape = $StaticBody2D/CollisionShape2D
 @onready var canPlaceArea = $canPlaceArea
+@onready var SFX = $AudioStreamPlayer
 
 var placed = false
 var mouseX = null
@@ -10,6 +11,7 @@ var canPlace
 
 func _ready(): 
 	_not_placed()
+	SFX.volume_db = -10
 
 func _despawn():
 	queue_free()
@@ -39,7 +41,10 @@ func _block_mouse():
 		position.y = mouseY
 
 func _placed():
-	if canPlace == false and placed == false:
+	if canPlace == false and placed == false and Globals.dead == false:
+		var sound = load("res://assets/soundEffects/ballHitOffBlock.wav")
+		SFX.stream = sound
+		SFX.play()
 		$".".modulate = "639bff"
 		collisionShape.disabled = false
 		timer.start()

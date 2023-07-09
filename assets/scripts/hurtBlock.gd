@@ -21,7 +21,7 @@ func _get_random_position():
 	
 	var rng2 = RandomNumberGenerator.new()
 	goAwayTime = rng2.randi_range(2, 5)
-	print(goAwayTime)
+#	print(goAwayTime)
 	awayTimer.wait_time = goAwayTime
 	animationPlayer.play("blockIn")
 

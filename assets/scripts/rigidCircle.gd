@@ -6,6 +6,8 @@ extends RigidBody2D
 @onready var sprite = $Sprite2D
 @onready var particles = $CPUParticles2D
 @onready var deathTimer = $CPUParticles2D/deathTimer
+@onready var soundEffect = $AudioStreamPlayer
+
 var velocity = Vector2()
 
 var maxVelocity = null 
@@ -16,8 +18,7 @@ var minVelocity = null
 func _ready():
 	deathTimer.set_wait_time(particles.get_lifetime())
 	velocity = Vector2(xVelocity ,yVelocity)
-#	maxVelocity = xVelocity
-#	minVelocity = xVelocity * -1 
+
 
 func _process(delta):
 	pass
@@ -104,6 +105,9 @@ func _on_hurt_box_area_entered(area):
 
 func _dead():
 	#sound effect here
+	var deathSound = load("res://assets/soundEffects/breakSoundEffect.wav")
+	soundEffect.stream = deathSound
+	soundEffect.play()
 	particles.emitting = true
 	particles.one_shot = true
 	sprite.visible = false
@@ -115,3 +119,14 @@ func _dead():
 func _on_death_timer_timeout():
 	queue_free()
 	#death thing here
+
+
+func _bounceSound():
+	var bounceSound = load("res://assets/soundEffects/ballHitOffBlock.wav")
+	soundEffect.stream = bounceSound
+	soundEffect.play()
+
+
+
+func _on_sound_box_body_entered(body):
+	_bounceSound()
