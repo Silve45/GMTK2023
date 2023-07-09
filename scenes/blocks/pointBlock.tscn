@@ -169,6 +169,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [connection signal="timeout" from="onTimer" to="." method="_on_on_timer_timeout"]
 [connection signal="timeout" from="awayTimer" to="." method="_on_away_timer_timeout"]

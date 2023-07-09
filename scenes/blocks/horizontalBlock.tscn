@@ -43,5 +43,6 @@ shape = SubResource("RectangleShape2D_68hl5")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_hpagq")
 volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

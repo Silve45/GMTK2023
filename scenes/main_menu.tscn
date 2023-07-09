@@ -1,13 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://s3h85vfvlf6f"]
+[gd_scene load_steps=18 format=3 uid="uid://s3h85vfvlf6f"]
 
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="1_0ha85"]
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_qqjfa"]
 [ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="2_wo0dw"]
 [ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="3_1phq5"]
 [ext_resource type="Texture2D" uid="uid://d4ivqpqcoluh7" path="res://assets/sprites/explosion.jpg" id="3_6s5wj"]
+[ext_resource type="Theme" uid="uid://bkjd5fsif2jc4" path="res://resources/themes/purpleButtonTheme.tres" id="6_hswut"]
 [ext_resource type="PackedScene" uid="uid://d18sjlorv2qat" path="res://scenes/controls_display.tscn" id="6_jocdf"]
+[ext_resource type="Theme" uid="uid://c1qqdixabqoy3" path="res://resources/themes/orangeButtonTheme.tres" id="7_cs8ng"]
+[ext_resource type="PackedScene" uid="uid://cgv46fsa53026" path="res://scenes/credits.tscn" id="9_4nkca"]
 
 [sub_resource type="FontFile" id="FontFile_cwrgo"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 face_index = null
 embolden = null
 transform = null
@@ -35,6 +41,24 @@ cache/0/75/0/scale = 1.0
 cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
 cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g32lh"]
+bg_color = Color(0.290196, 0.890196, 0.392157, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fhr1"]
+bg_color = Color(0.290196, 0.890196, 0.392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q57ef"]
+bg_color = Color(0.364706, 0.980392, 0.458824, 1)
+
+[sub_resource type="Theme" id="Theme_bmeet"]
+Button/styles/hover = SubResource("StyleBoxFlat_g32lh")
+Button/styles/normal = SubResource("StyleBoxFlat_0fhr1")
+Button/styles/pressed = SubResource("StyleBoxFlat_q57ef")
 
 [sub_resource type="Animation" id="Animation_vjofl"]
 length = 0.001
@@ -210,6 +234,20 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_explode_sound"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_g5u38"]
 _data = {
@@ -263,6 +301,13 @@ theme = ExtResource("3_1phq5")
 theme_override_fonts/font = SubResource("FontFile_cwrgo")
 theme_override_font_sizes/font_size = 75
 text = "Controls"
+
+[node name="creditsButton" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_bmeet")
+theme_override_fonts/font = SubResource("FontFile_cwrgo")
+theme_override_font_sizes/font_size = 75
+text = "Credits"
 
 [node name="quitGameButton" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
@@ -330,12 +375,49 @@ libraries = {
 "": SubResource("AnimationLibrary_g5u38")
 }
 
+[node name="MuteButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -419.0
+offset_top = -276.0
+offset_right = -31.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="MuteMusic" type="Button" parent="MuteButtons"]
+layout_mode = 2
+theme = ExtResource("6_hswut")
+theme_override_fonts/font = SubResource("FontFile_cwrgo")
+theme_override_font_sizes/font_size = 75
+text = "Mute Music"
+
+[node name="MuteSfx" type="Button" parent="MuteButtons"]
+layout_mode = 2
+theme = ExtResource("7_cs8ng")
+theme_override_fonts/font = SubResource("FontFile_cwrgo")
+theme_override_font_sizes/font_size = 75
+text = "Mute SFX"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
 
 [node name="controlsDisplay" parent="CanvasLayer" instance=ExtResource("6_jocdf")]
 visible = false
 
+[node name="Credits" parent="CanvasLayer" instance=ExtResource("9_4nkca")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="pressed" from="ColorRect/VBoxContainer/playGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/controlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/creditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/quitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="MuteButtons/MuteMusic" to="." method="_on_mute_music_pressed"]
+[connection signal="pressed" from="MuteButtons/MuteSfx" to="." method="_on_mute_sfx_pressed"]

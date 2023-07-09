@@ -15,7 +15,8 @@ run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.0941176, 0.0941176, 0.0941176, 1)
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://Windows Icon512.png"
+config/windows_native_icon="res://Windows Icon.ico"
 
 [autoload]
 

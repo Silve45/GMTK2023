@@ -70,6 +70,7 @@ scale_amount_curve = SubResource("Curve_fes03")
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [node name="soundBox" type="Area2D" parent="."]
 collision_layer = 0

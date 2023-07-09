@@ -58,6 +58,7 @@ script = ExtResource("1_ay4xj")
 backgroundColor = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 26.0
 scale = Vector2(3, 3)

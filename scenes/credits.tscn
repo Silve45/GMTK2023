@@ -1,0 +1,185 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgv46fsa53026"]
+
+[ext_resource type="Script" path="res://assets/scripts/Credits.gd" id="1_8plvt"]
+[ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="2_68523"]
+[ext_resource type="Theme" uid="uid://c1qqdixabqoy3" path="res://resources/themes/orangeButtonTheme.tres" id="3_xt1c3"]
+
+[sub_resource type="FontFile" id="FontFile_awi0a"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/75/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/75/0 = Vector2(0, 0)
+cache/0/75/0/ascent = 0.0
+cache/0/75/0/descent = 0.0
+cache/0/75/0/underline_position = 0.0
+cache/0/75/0/underline_thickness = 0.0
+cache/0/75/0/scale = 1.0
+cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8plvt")
+
+[node name="BackGround" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+
+[node name="quitGameButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -85.0
+offset_top = -202.0
+offset_right = 68.0
+offset_bottom = -102.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_68523")
+theme_override_fonts/font = SubResource("FontFile_awi0a")
+theme_override_font_sizes/font_size = 75
+text = "Back"
+
+[node name="CreditsTop" type="Label" parent="."]
+self_modulate = Color(0.301961, 0.8, 0.929412, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.5
+offset_top = 37.0
+offset_right = 128.5
+offset_bottom = 143.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 75
+text = "Credits"
+
+[node name="CreditsTop2" type="Label" parent="."]
+self_modulate = Color(0.968627, 0.780392, 0.337255, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 130.0
+offset_right = 129.0
+offset_bottom = 236.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Songs - from Pixabay"
+horizontal_alignment = 1
+
+[node name="CreditsTop4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -292.0
+offset_top = 134.0
+offset_right = 314.0
+offset_bottom = 350.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "
+Song1 - by XtremeFreddy
+Song2 - by Papetti"
+horizontal_alignment = 1
+
+[node name="CreditsTop3" type="Label" parent="."]
+self_modulate = Color(0.968627, 0.780392, 0.337255, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -288.0
+offset_top = 448.0
+offset_right = 298.0
+offset_bottom = 554.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Code and Eveything Else"
+horizontal_alignment = 1
+
+[node name="CreditsTop5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -279.0
+offset_top = 527.0
+offset_right = 307.0
+offset_bottom = 633.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "ME"
+horizontal_alignment = 1
+
+[node name="CreditsTop6" type="Label" parent="."]
+self_modulate = Color(0.972549, 0.45098, 0.894118, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.9999
+offset_top = 530.0
+offset_right = 495.0
+offset_bottom = 636.0
+grow_horizontal = 2
+rotation = 0.15708
+theme_override_font_sizes/font_size = 30
+text = "-add chad picture"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 211.0
+offset_right = 645.0
+offset_bottom = 270.0
+theme = ExtResource("3_xt1c3")
+text = "   "
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 673.0
+offset_top = 289.0
+offset_right = 735.0
+offset_bottom = 348.0
+theme = ExtResource("3_xt1c3")
+text = "   "
+
+[connection signal="pressed" from="quitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

@@ -30,3 +30,17 @@ func _on_main_menu_pressed():
 func _on_quit_game_button_pressed():
 	get_tree().paused = false
 	get_tree().quit()
+
+
+func _on_mute_music_pressed():
+	if MusicController.musicOn == false:
+		MusicController.musicOn = true
+	else:
+		MusicController.musicOn = false
+
+
+func _on_mute_sfx_pressed():
+	if MusicController.sfxOn == false:
+		MusicController.sfxOn = true
+	else:
+		MusicController.sfxOn = false

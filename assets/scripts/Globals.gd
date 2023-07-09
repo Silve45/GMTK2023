@@ -7,6 +7,7 @@ var dead = false
 var maxHurtBlockCount = 3
 var controlsScreenOn = false
 var fullScreen = false
+var creditsScreenOn = false
 
 func _reset():
 	score = 0

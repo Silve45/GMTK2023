@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy2mqxg2v1g2b"]
+[gd_scene load_steps=15 format=3 uid="uid://dy2mqxg2v1g2b"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_8hhid"]
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="1_vcupu"]
@@ -36,6 +36,71 @@ cache/0/75/0/scale = 1.0
 cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
 cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
 cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uoe7q"]
+bg_color = Color(0.819608, 0.317647, 0.933333, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmddm"]
+bg_color = Color(0.819608, 0.317647, 0.933333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ae7sq"]
+bg_color = Color(0.870588, 0.505882, 0.956863, 1)
+
+[sub_resource type="Theme" id="Theme_ycuaf"]
+Button/styles/hover = SubResource("StyleBoxFlat_uoe7q")
+Button/styles/normal = SubResource("StyleBoxFlat_kmddm")
+Button/styles/pressed = SubResource("StyleBoxFlat_ae7sq")
+
+[sub_resource type="FontFile" id="FontFile_j4gu7"]
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/75/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/75/0 = Vector2(0, 0)
+cache/0/75/0/ascent = 0.0
+cache/0/75/0/descent = 0.0
+cache/0/75/0/underline_position = 0.0
+cache/0/75/0/underline_thickness = 0.0
+cache/0/75/0/scale = 1.0
+cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0y18"]
+bg_color = Color(0.901961, 0.478431, 0.188235, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7h0yl"]
+bg_color = Color(0.901961, 0.478431, 0.188235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxvij"]
+bg_color = Color(0.956863, 0.545098, 0.282353, 1)
+
+[sub_resource type="Theme" id="Theme_c2atm"]
+Button/styles/hover = SubResource("StyleBoxFlat_e0y18")
+Button/styles/normal = SubResource("StyleBoxFlat_7h0yl")
+Button/styles/pressed = SubResource("StyleBoxFlat_sxvij")
 
 [node name="Pause" type="Control"]
 process_mode = 3
@@ -105,6 +170,37 @@ theme_override_fonts/font = SubResource("FontFile_lkqpf")
 theme_override_font_sizes/font_size = 75
 text = "Quit Game"
 
+[node name="MuteButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -424.0
+offset_top = -295.0
+offset_right = -36.0
+offset_bottom = -45.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="MuteMusic" type="Button" parent="MuteButtons"]
+layout_mode = 2
+theme = SubResource("Theme_ycuaf")
+theme_override_fonts/font = SubResource("FontFile_j4gu7")
+theme_override_font_sizes/font_size = 75
+text = "Mute Music"
+
+[node name="MuteSfx" type="Button" parent="MuteButtons"]
+layout_mode = 2
+theme = SubResource("Theme_c2atm")
+theme_override_fonts/font = SubResource("FontFile_j4gu7")
+theme_override_font_sizes/font_size = 75
+text = "Mute SFX"
+
 [connection signal="pressed" from="VBoxContainer/resumeGameButton" to="." method="_on_resume_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="VBoxContainer/quitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="pressed" from="MuteButtons/MuteMusic" to="." method="_on_mute_music_pressed"]
+[connection signal="pressed" from="MuteButtons/MuteSfx" to="." method="_on_mute_sfx_pressed"]

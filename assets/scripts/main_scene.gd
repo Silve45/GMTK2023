@@ -31,8 +31,8 @@ func _ready():
 func _process(delta):
 	#begin mouse stuff _debug
 	_mouse_position()
-	var mouseLocation = str(mouseX, ": ", mouseY)
-	label.set_text(mouseLocation)
+#	var mouseLocation = str(mouseX, ": ", mouseY)
+#	label.set_text(mouseLocation)
 	#end mouse stuff
 	_stop_song()#stops song at end
 	if Globals.dead == false:
