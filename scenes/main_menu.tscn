@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://s3h85vfvlf6f"]
+[gd_scene load_steps=17 format=3 uid="uid://s3h85vfvlf6f"]
 
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="1_0ha85"]
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_qqjfa"]
@@ -9,38 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://d18sjlorv2qat" path="res://scenes/controls_display.tscn" id="6_jocdf"]
 [ext_resource type="Theme" uid="uid://c1qqdixabqoy3" path="res://resources/themes/orangeButtonTheme.tres" id="7_cs8ng"]
 [ext_resource type="PackedScene" uid="uid://cgv46fsa53026" path="res://scenes/credits.tscn" id="9_4nkca"]
-
-[sub_resource type="FontFile" id="FontFile_cwrgo"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/75/0 = Vector2(0, 0)
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/75/0 = Vector2(0, 0)
-cache/0/75/0/ascent = 0.0
-cache/0/75/0/descent = 0.0
-cache/0/75/0/underline_position = 0.0
-cache/0/75/0/underline_thickness = 0.0
-cache/0/75/0/scale = 1.0
-cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g32lh"]
 bg_color = Color(0.290196, 0.890196, 0.392157, 1)
@@ -291,28 +259,24 @@ theme_override_constants/separation = 25
 [node name="playGameButton" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_0ha85")
-theme_override_fonts/font = SubResource("FontFile_cwrgo")
 theme_override_font_sizes/font_size = 75
 text = "Play"
 
 [node name="controlsButton" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_1phq5")
-theme_override_fonts/font = SubResource("FontFile_cwrgo")
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
 [node name="creditsButton" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_bmeet")
-theme_override_fonts/font = SubResource("FontFile_cwrgo")
 theme_override_font_sizes/font_size = 75
 text = "Credits"
 
 [node name="quitGameButton" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_wo0dw")
-theme_override_fonts/font = SubResource("FontFile_cwrgo")
 theme_override_font_sizes/font_size = 75
 text = "Quit"
 
@@ -393,14 +357,12 @@ theme_override_constants/separation = 50
 [node name="MuteMusic" type="Button" parent="MuteButtons"]
 layout_mode = 2
 theme = ExtResource("6_hswut")
-theme_override_fonts/font = SubResource("FontFile_cwrgo")
 theme_override_font_sizes/font_size = 75
 text = "Mute Music"
 
 [node name="MuteSfx" type="Button" parent="MuteButtons"]
 layout_mode = 2
 theme = ExtResource("7_cs8ng")
-theme_override_fonts/font = SubResource("FontFile_cwrgo")
 theme_override_font_sizes/font_size = 75
 text = "Mute SFX"
 
@@ -411,6 +373,7 @@ layer = 5
 visible = false
 
 [node name="Credits" parent="CanvasLayer" instance=ExtResource("9_4nkca")]
+visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 

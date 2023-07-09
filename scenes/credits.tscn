@@ -1,40 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgv46fsa53026"]
+[gd_scene load_steps=4 format=3 uid="uid://cgv46fsa53026"]
 
 [ext_resource type="Script" path="res://assets/scripts/Credits.gd" id="1_8plvt"]
 [ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="2_68523"]
 [ext_resource type="Theme" uid="uid://c1qqdixabqoy3" path="res://resources/themes/orangeButtonTheme.tres" id="3_xt1c3"]
-
-[sub_resource type="FontFile" id="FontFile_awi0a"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/75/0 = Vector2(0, 0)
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/75/0 = Vector2(0, 0)
-cache/0/75/0/ascent = 0.0
-cache/0/75/0/descent = 0.0
-cache/0/75/0/underline_position = 0.0
-cache/0/75/0/underline_thickness = 0.0
-cache/0/75/0/scale = 1.0
-cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -68,7 +36,6 @@ offset_bottom = -102.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_68523")
-theme_override_fonts/font = SubResource("FontFile_awi0a")
 theme_override_font_sizes/font_size = 75
 text = "Back"
 

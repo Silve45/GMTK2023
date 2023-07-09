@@ -1,41 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://jy451i6j4lkk"]
+[gd_scene load_steps=5 format=3 uid="uid://jy451i6j4lkk"]
 
 [ext_resource type="Script" path="res://assets/scripts/deathScene.gd" id="1_55ydj"]
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="2_1n6d0"]
 [ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="3_jagq4"]
 [ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="4_b4xnq"]
-
-[sub_resource type="FontFile" id="FontFile_6ktar"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/75/0 = Vector2(0, 0)
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/75/0 = Vector2(0, 0)
-cache/0/75/0/ascent = 0.0
-cache/0/75/0/descent = 0.0
-cache/0/75/0/underline_position = 0.0
-cache/0/75/0/underline_thickness = 0.0
-cache/0/75/0/scale = 1.0
-cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
 
 [node name="deathScene" type="Control"]
 layout_mode = 3
@@ -104,21 +72,18 @@ theme_override_constants/separation = 45
 [node name="restartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_1n6d0")
-theme_override_fonts/font = SubResource("FontFile_6ktar")
 theme_override_font_sizes/font_size = 75
 text = "Restart"
 
 [node name="menuButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_jagq4")
-theme_override_fonts/font = SubResource("FontFile_6ktar")
 theme_override_font_sizes/font_size = 75
 text = "Main Menu"
 
 [node name="quitGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_b4xnq")
-theme_override_fonts/font = SubResource("FontFile_6ktar")
 theme_override_font_sizes/font_size = 75
 text = "Quit Game"
 

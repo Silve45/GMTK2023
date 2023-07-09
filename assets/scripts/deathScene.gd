@@ -5,6 +5,7 @@ extends Control
 func _process(delta):
 	_final_score()
 	_death_layer_on()
+	_hide_quit()
 
 func _final_score():
 	var str = str("Score is ", int(Globals.score))
@@ -27,3 +28,9 @@ func _on_menu_button_pressed():
 
 func _on_quit_game_button_pressed():
 	get_tree().quit()
+
+func _hide_quit():
+	if (OS.get_name() == "web"):
+		$VBoxContainer/quitGameButton.visible = false
+	else:
+		pass

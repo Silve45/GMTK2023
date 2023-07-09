@@ -7,6 +7,7 @@ func _ready():
 func _process(delta):
 	_pause_layer_on()
 	_pause()
+	_hide_quit()
 
 
 func _pause_layer_on():#I had a old way in godot 3,but this is cooler
@@ -44,3 +45,9 @@ func _on_mute_sfx_pressed():
 		MusicController.sfxOn = true
 	else:
 		MusicController.sfxOn = false
+
+func _hide_quit():
+	if (OS.get_name() == "web"):
+		$VBoxContainer/quitGameButton.visible = false
+	else:
+		pass

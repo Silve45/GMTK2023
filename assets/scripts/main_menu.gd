@@ -46,4 +46,11 @@ func _on_mute_sfx_pressed():
 	else:
 		MusicController.sfxOn = false
 
+func _process(delta):
+	_hide_quit()
 
+func _hide_quit():
+	if (OS.get_name() == "web"):
+		$ColorRect/VBoxContainer/quitGameButton.visible = false
+	else:
+		pass
