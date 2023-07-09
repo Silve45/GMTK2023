@@ -1,0 +1,127 @@
+[gd_scene load_steps=6 format=3 uid="uid://jy451i6j4lkk"]
+
+[ext_resource type="Script" path="res://assets/scripts/deathScene.gd" id="1_55ydj"]
+[ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="2_1n6d0"]
+[ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="3_jagq4"]
+[ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="4_b4xnq"]
+
+[sub_resource type="FontFile" id="FontFile_6ktar"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/75/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/75/0 = Vector2(0, 0)
+cache/0/75/0/ascent = 0.0
+cache/0/75/0/descent = 0.0
+cache/0/75/0/underline_position = 0.0
+cache/0/75/0/underline_thickness = 0.0
+cache/0/75/0/scale = 1.0
+cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
+
+[node name="deathScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_55ydj")
+
+[node name="backGround" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.643137)
+
+[node name="labelContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -803.5
+offset_right = 803.5
+offset_bottom = 632.0
+grow_horizontal = 2
+theme_override_constants/separation = -35
+
+[node name="youDiedLabel" type="Label" parent="labelContainer"]
+self_modulate = Color(0.94902, 0.352941, 0.352941, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "You Died"
+horizontal_alignment = 1
+
+[node name="scoreLabel" type="Label" parent="labelContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Score = 9999999"
+horizontal_alignment = 1
+
+[node name="bestScoreLabel" type="Label" parent="labelContainer"]
+self_modulate = Color(0.968627, 0.780392, 0.337255, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 150
+text = "Best Score = 99999999"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = 54.0
+offset_right = 174.0
+offset_bottom = 444.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="restartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_1n6d0")
+theme_override_fonts/font = SubResource("FontFile_6ktar")
+theme_override_font_sizes/font_size = 75
+text = "Restart"
+
+[node name="menuButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_jagq4")
+theme_override_fonts/font = SubResource("FontFile_6ktar")
+theme_override_font_sizes/font_size = 75
+text = "Main Menu"
+
+[node name="quitGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_b4xnq")
+theme_override_fonts/font = SubResource("FontFile_6ktar")
+theme_override_font_sizes/font_size = 75
+text = "Quit Game"
+
+[connection signal="pressed" from="VBoxContainer/restartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/menuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitGameButton" to="." method="_on_quit_game_button_pressed"]

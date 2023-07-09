@@ -1,0 +1,144 @@
+[gd_scene load_steps=7 format=3 uid="uid://d18sjlorv2qat"]
+
+[ext_resource type="Script" path="res://assets/scripts/controlsDisplay.gd" id="1_g3l2j"]
+[ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="2_7fwxq"]
+[ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="2_w23hx"]
+[ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="3_jx7il"]
+[ext_resource type="Texture2D" uid="uid://d104igbx1ev2f" path="res://icon.svg" id="4_1rw1v"]
+
+[sub_resource type="FontFile" id="FontFile_lpgs8"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/75/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/75/0 = Vector2(0, 0)
+cache/0/75/0/ascent = 0.0
+cache/0/75/0/descent = 0.0
+cache/0/75/0/underline_position = 0.0
+cache/0/75/0/underline_thickness = 0.0
+cache/0/75/0/scale = 1.0
+cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
+
+[node name="controlsDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g3l2j")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -858.0
+offset_top = -70.0
+offset_right = 858.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "Touch the yellow blocks they give you points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="leftButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 107.0
+offset_top = -195.0
+offset_right = 263.0
+offset_bottom = -95.0
+grow_vertical = 0
+theme = ExtResource("2_7fwxq")
+theme_override_fonts/font = SubResource("FontFile_lpgs8")
+theme_override_font_sizes/font_size = 75
+text = "  <   "
+
+[node name="close Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 866.0
+offset_top = -1018.0
+offset_right = 1022.0
+offset_bottom = -918.0
+grow_vertical = 0
+theme = ExtResource("2_w23hx")
+theme_override_fonts/font = SubResource("FontFile_lpgs8")
+theme_override_font_sizes/font_size = 75
+text = "X"
+
+[node name="rightButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -303.0
+offset_top = -195.0
+offset_right = -147.0
+offset_bottom = -95.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_jx7il")
+theme_override_fonts/font = SubResource("FontFile_lpgs8")
+theme_override_font_sizes/font_size = 75
+text = "  >   "
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -211.0
+offset_top = 86.0
+offset_right = -82.9999
+offset_bottom = 214.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+texture = ExtResource("4_1rw1v")
+
+[connection signal="pressed" from="leftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="close Button" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="rightButton" to="." method="_on_right_button_pressed"]

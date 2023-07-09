@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy2mqxg2v1g2b"]
+
+[ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_8hhid"]
+[ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="1_vcupu"]
+[ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="2_2mh23"]
+[ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="3_k6bkh"]
+
+[sub_resource type="FontFile" id="FontFile_lkqpf"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/75/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/75/0 = Vector2(0, 0)
+cache/0/75/0/ascent = 0.0
+cache/0/75/0/descent = 0.0
+cache/0/75/0/underline_position = 0.0
+cache/0/75/0/underline_thickness = 0.0
+cache/0/75/0/scale = 1.0
+cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
+
+[node name="Pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8hhid")
+
+[node name="backgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.243137)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_top = 192.0
+offset_right = 251.0
+offset_bottom = 400.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 150
+text = "Paused"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -94.0
+offset_right = 188.0
+offset_bottom = 296.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="resumeGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_vcupu")
+theme_override_fonts/font = SubResource("FontFile_lkqpf")
+theme_override_font_sizes/font_size = 75
+text = "Resume"
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_k6bkh")
+theme_override_fonts/font = SubResource("FontFile_lkqpf")
+theme_override_font_sizes/font_size = 75
+text = "Main Menu"
+
+[node name="quitGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_2mh23")
+theme_override_fonts/font = SubResource("FontFile_lkqpf")
+theme_override_font_sizes/font_size = 75
+text = "Quit Game"
+
+[connection signal="pressed" from="VBoxContainer/resumeGameButton" to="." method="_on_resume_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitGameButton" to="." method="_on_quit_game_button_pressed"]

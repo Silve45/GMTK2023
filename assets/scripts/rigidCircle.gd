@@ -108,10 +108,10 @@ func _dead():
 	particles.one_shot = true
 	sprite.visible = false
 	velocity = Vector2.ZERO
-	deathTimer.start()#sets the death var to true
+	Globals.dead = true#sets dead here *changed
+	deathTimer.start()#frees it
 
 
 func _on_death_timer_timeout():
 	queue_free()
-	Globals.dead = true
 	#death thing here

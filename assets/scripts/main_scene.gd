@@ -12,7 +12,7 @@ var mouseY = null
 var add : Node2D
 var what = null
 
-var maxHurtBlockCount = 3
+
 var blockNum = 0
 var stringBlock = null
 var block = "res://scenes/blocks/block.tscn"
@@ -23,6 +23,7 @@ var hurtBlock = "res://scenes/hazards/hurtBlock.tscn"
 var coinBlock = "res://scenes/blocks/pointBlock.tscn"
 
 func _ready():
+	Globals._reset()
 	_spawn_hurt_block()
 	_spawn_point_block()
 
@@ -37,6 +38,11 @@ func _process(delta):
 		_choosenBlock()
 		_block_track()
 		_maxHurtBlock()
+		_pause()
+
+func _pause():
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = true
 
 func _choosenBlock():
 	match[blockNum]:
@@ -71,7 +77,7 @@ func _spawn_hurt_block():
 		newHurtBlockTimer.start()
 		
 func _on_new_hurt_block_timeout():
-	if enemyHold.get_child_count() < 6:#maxHurtBlockCount:
+	if enemyHold.get_child_count() < Globals.maxHurtBlockCount:
 		var block = load(hurtBlock)
 		var where = block.instantiate()
 		enemyHold.add_child(where)
@@ -96,11 +102,11 @@ func _on_new_coin_block_timeout():
 
 func _maxHurtBlock():#you may need to change these later _debug
 	if Globals.score >= 35:
-		maxHurtBlockCount = 4
+		Globals.maxHurtBlockCount = 4
 	if Globals.score >=75:
-		maxHurtBlockCount = 5
+		Globals.maxHurtBlockCount = 5
 	if Globals.score >= 125:
-		maxHurtBlockCount = 6
+		Globals.maxHurtBlockCount = 6
 	
 
 
