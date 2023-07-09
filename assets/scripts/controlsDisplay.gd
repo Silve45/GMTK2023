@@ -68,7 +68,7 @@ func _label_set():
 		[4]:
 			label.set_text("press (F) to go full screen")
 		[5]:#here
-			label.set_text("pres (esc) to pause (in-game)")
+			label.set_text("press (P) to pause (in-game)")
 		[6]:
 			label.set_text("Look I am really tired")
 		[7]:

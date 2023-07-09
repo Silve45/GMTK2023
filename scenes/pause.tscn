@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://dy2mqxg2v1g2b"]
+[gd_scene load_steps=12 format=3 uid="uid://dy2mqxg2v1g2b"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_8hhid"]
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="1_vcupu"]
-[ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="2_2mh23"]
 [ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="3_k6bkh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uoe7q"]
@@ -100,12 +99,6 @@ theme = ExtResource("3_k6bkh")
 theme_override_font_sizes/font_size = 75
 text = "Main Menu"
 
-[node name="quitGameButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_2mh23")
-theme_override_font_sizes/font_size = 75
-text = "Quit Game"
-
 [node name="MuteButtons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
@@ -135,6 +128,5 @@ text = "Mute SFX"
 
 [connection signal="pressed" from="VBoxContainer/resumeGameButton" to="." method="_on_resume_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="VBoxContainer/quitGameButton" to="." method="_on_quit_game_button_pressed"]
 [connection signal="pressed" from="MuteButtons/MuteMusic" to="." method="_on_mute_music_pressed"]
 [connection signal="pressed" from="MuteButtons/MuteSfx" to="." method="_on_mute_sfx_pressed"]

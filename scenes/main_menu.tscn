@@ -1,8 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://s3h85vfvlf6f"]
+[gd_scene load_steps=16 format=3 uid="uid://s3h85vfvlf6f"]
 
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="1_0ha85"]
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_qqjfa"]
-[ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="2_wo0dw"]
 [ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="3_1phq5"]
 [ext_resource type="Texture2D" uid="uid://d4ivqpqcoluh7" path="res://assets/sprites/explosion.jpg" id="3_6s5wj"]
 [ext_resource type="Theme" uid="uid://bkjd5fsif2jc4" path="res://resources/themes/purpleButtonTheme.tres" id="6_hswut"]
@@ -274,12 +273,6 @@ theme = SubResource("Theme_bmeet")
 theme_override_font_sizes/font_size = 75
 text = "Credits"
 
-[node name="quitGameButton" type="Button" parent="ColorRect/VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_wo0dw")
-theme_override_font_sizes/font_size = 75
-text = "Quit"
-
 [node name="label1" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -380,7 +373,6 @@ visible = false
 [connection signal="pressed" from="ColorRect/VBoxContainer/playGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/controlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/creditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/quitGameButton" to="." method="_on_quit_game_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="MuteButtons/MuteMusic" to="." method="_on_mute_music_pressed"]
 [connection signal="pressed" from="MuteButtons/MuteSfx" to="." method="_on_mute_sfx_pressed"]

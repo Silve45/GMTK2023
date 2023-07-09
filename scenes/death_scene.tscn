@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://jy451i6j4lkk"]
+[gd_scene load_steps=4 format=3 uid="uid://jy451i6j4lkk"]
 
 [ext_resource type="Script" path="res://assets/scripts/deathScene.gd" id="1_55ydj"]
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="2_1n6d0"]
 [ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="3_jagq4"]
-[ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="4_b4xnq"]
 
 [node name="deathScene" type="Control"]
 layout_mode = 3
@@ -81,12 +80,5 @@ theme = ExtResource("3_jagq4")
 theme_override_font_sizes/font_size = 75
 text = "Main Menu"
 
-[node name="quitGameButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme = ExtResource("4_b4xnq")
-theme_override_font_sizes/font_size = 75
-text = "Quit Game"
-
 [connection signal="pressed" from="VBoxContainer/restartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/menuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/quitGameButton" to="." method="_on_quit_game_button_pressed"]
