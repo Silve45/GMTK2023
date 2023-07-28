@@ -78,6 +78,10 @@ toggle_fullscreen={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [layer_names]
 
 2d_physics/layer_1="world"
@@ -85,3 +89,7 @@ toggle_fullscreen={
 2d_physics/layer_3="ball_player"
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="collectibles"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true

@@ -9,9 +9,12 @@ var mouseX = null
 var mouseY = null
 var canPlace
 
-func _ready(): 
+func _ready():
 	_not_placed()
 	SFX.volume_db = -10
+#canPlaceArea.connect("input_event", _test_call) 
+#how to do signals
+
 
 func _despawn():
 	queue_free()

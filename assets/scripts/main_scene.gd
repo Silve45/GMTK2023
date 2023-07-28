@@ -70,10 +70,17 @@ func _block_track():
 		blockHold.add_child(add)
 		_increment_block()
 
-
+#
 func _input(event):
-	if event.is_action_pressed("addClick") and add != null and Globals.dead == false:
-		add._placed()
+	if OS.get_name() == "Windows" || OS.get_name() == "macOS":
+		print("not mobile")
+		if event.is_action_pressed("addClick") and add != null and Globals.dead == false:
+			add._placed()
+	if OS.get_name() == "Android" || OS.get_name() == "iOS":
+		print("mobile")
+		if event is InputEventMouseButton and event.double_click and add != null and Globals.dead == false:
+			add._placed()
+
 		
 
 
