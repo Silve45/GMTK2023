@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://csi4qqxwojof8"]
+[gd_scene load_steps=10 format=3 uid="uid://csi4qqxwojof8"]
 
 [ext_resource type="Script" path="res://assets/scripts/gameCamera.gd" id="1_ay4xj"]
 [ext_resource type="Script" path="res://assets/scripts/main_scene.gd" id="1_q882a"]
+[ext_resource type="Texture2D" uid="uid://dtc3sa5vx2h7o" path="res://assets/sprites/blocks.PNG" id="3_wywra"]
 [ext_resource type="PackedScene" uid="uid://0ylok07cdfm1" path="res://scenes/score.tscn" id="4_o5w38"]
 [ext_resource type="PackedScene" uid="uid://dxklt8usixud2" path="res://scenes/rigid_circle.tscn" id="4_r0jip"]
 [ext_resource type="PackedScene" uid="uid://dy2mqxg2v1g2b" path="res://scenes/pause.tscn" id="5_b2kw1"]
@@ -22,35 +23,69 @@ offset_top = 537.0
 offset_right = 961.0
 offset_bottom = 537.0
 
-[node name="invisibleBorderWall" type="Node2D" parent="."]
+[node name="Wall" type="Node2D" parent="."]
 
-[node name="top" type="StaticBody2D" parent="invisibleBorderWall"]
+[node name="invisibleBorderWall" type="Node2D" parent="Wall"]
+
+[node name="top" type="StaticBody2D" parent="Wall/invisibleBorderWall"]
 position = Vector2(10, -10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleBorderWall/top"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/invisibleBorderWall/top"]
 position = Vector2(950, -39)
 shape = SubResource("RectangleShape2D_1iwo6")
 
-[node name="bottom" type="StaticBody2D" parent="invisibleBorderWall"]
+[node name="bottom" type="StaticBody2D" parent="Wall/invisibleBorderWall"]
 position = Vector2(0, 1133)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleBorderWall/bottom"]
-position = Vector2(960, -4.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/invisibleBorderWall/bottom"]
+position = Vector2(960, -4)
 shape = SubResource("RectangleShape2D_1iwo6")
 
-[node name="left" type="StaticBody2D" parent="invisibleBorderWall"]
+[node name="left" type="StaticBody2D" parent="Wall/invisibleBorderWall"]
 position = Vector2(-10, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleBorderWall/left"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/invisibleBorderWall/left"]
 position = Vector2(-58.5, 540)
 shape = SubResource("RectangleShape2D_e5s8q")
 
-[node name="right" type="StaticBody2D" parent="invisibleBorderWall"]
+[node name="right" type="StaticBody2D" parent="Wall/invisibleBorderWall"]
 position = Vector2(1983, 9)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="invisibleBorderWall/right"]
-position = Vector2(5, 540)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/invisibleBorderWall/right"]
+position = Vector2(5.5, 540)
 shape = SubResource("RectangleShape2D_e5s8q")
+
+[node name="visibleBorderBorderWall" type="Node2D" parent="Wall"]
+
+[node name="left" type="Sprite2D" parent="Wall/visibleBorderBorderWall"]
+position = Vector2(-6.4, 540.098)
+scale = Vector2(0.2, 17.27)
+texture = ExtResource("3_wywra")
+hframes = 2
+vframes = 2
+
+[node name="right" type="Sprite2D" parent="Wall/visibleBorderBorderWall"]
+position = Vector2(1926.4, 540.098)
+scale = Vector2(0.2, 17.27)
+texture = ExtResource("3_wywra")
+hframes = 2
+vframes = 2
+
+[node name="top" type="Sprite2D" parent="Wall/visibleBorderBorderWall"]
+position = Vector2(960.003, -6.39998)
+rotation = 1.5708
+scale = Vector2(0.2, 30.0001)
+texture = ExtResource("3_wywra")
+hframes = 2
+vframes = 2
+
+[node name="bottom" type="Sprite2D" parent="Wall/visibleBorderBorderWall"]
+position = Vector2(960.003, 1086.4)
+rotation = 1.5708
+scale = Vector2(0.2, 30.0001)
+texture = ExtResource("3_wywra")
+hframes = 2
+vframes = 2
 
 [node name="gameCamera" type="Camera2D" parent="."]
 position = Vector2(960, 540)
