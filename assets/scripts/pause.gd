@@ -1,4 +1,7 @@
 extends Control
+@onready var muteMusic = $MuteButtons/MuteMusic
+@onready var muteSFX = $MuteButtons/MuteSfx
+
 
 func _ready():
 	pass
@@ -7,6 +10,7 @@ func _ready():
 func _process(delta):
 	_pause_layer_on()
 	_pause()
+	_button_change()
 #	_hide_quit()
 
 
@@ -46,8 +50,13 @@ func _on_mute_sfx_pressed():
 	else:
 		MusicController.sfxOn = false
 
-#func _hide_quit():
-#	if (OS.get_name() == "web"):
-#		$VBoxContainer/quitGameButton.visible = false
-#	else:
-#		pass
+func _button_change():
+	if MusicController.musicOn == true:
+		muteMusic.set_text("Mute Music")
+	else:
+		muteMusic.set_text("Unmute Music")
+	
+	if MusicController.sfxOn == true:
+		muteSFX.set_text("Mute SFX")
+	else:
+		muteSFX.set_text("Unmute SFX")

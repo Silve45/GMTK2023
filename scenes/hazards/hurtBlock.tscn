@@ -130,7 +130,7 @@ hframes = 2
 vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-visible = false
+scale = Vector2(0.8, 0.8)
 shape = SubResource("RectangleShape2D_68hl5")
 
 [node name="onTimer" type="Timer" parent="."]
@@ -151,10 +151,10 @@ theme_override_font_sizes/font_size = 200
 text = "t"
 
 [node name="canPlaceArea" type="Area2D" parent="."]
-collision_layer = 8
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="canPlaceArea"]
-visible = false
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_68hl5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

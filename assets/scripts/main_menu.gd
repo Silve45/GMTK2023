@@ -1,6 +1,8 @@
 extends Control
 @onready var animationPlayer = $AnimationPlayer
 @onready var muteButtons = $MuteButtons
+@onready var muteMusic = $MuteButtons/MuteMusic
+@onready var muteSFX = $MuteButtons/MuteSfx
 @onready var soundEffect = $AudioStreamPlayer
 
 func _ready():
@@ -48,6 +50,18 @@ func _on_mute_sfx_pressed():
 
 func _process(delta):
 	_hide_quit()
+	_button_change()
+
+func _button_change():
+	if MusicController.musicOn == true:
+		muteMusic.set_text("Mute Music")
+	else:
+		muteMusic.set_text("Unmute Music")
+	
+	if MusicController.sfxOn == true:
+		muteSFX.set_text("Mute SFX")
+	else:
+		muteSFX.set_text("Unmute SFX")
 
 func _hide_quit():
 	if (OS.get_name() == "web"):

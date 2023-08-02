@@ -339,8 +339,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -419.0
-offset_top = -276.0
+offset_left = -573.0
+offset_top = -282.0
 offset_right = -31.0
 offset_bottom = -26.0
 grow_horizontal = 0
@@ -369,6 +369,7 @@ visible = false
 visible = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/playGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/controlsButton" to="." method="_on_controls_button_pressed"]

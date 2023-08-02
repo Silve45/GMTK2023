@@ -10,6 +10,7 @@ extends Node2D
 @onready var particles = $CPUParticles2D
 @onready var label = $Label
 @onready var soundEffect = $AudioStreamPlayer
+@onready var canPlaceShape = $canPlaceArea/CollisionShape2D 
 
 var screenSize = null 
 var goAwayTime
@@ -26,7 +27,7 @@ func _get_random_position():
 	
 	var rng2 = RandomNumberGenerator.new()
 	goAwayTime = 3
-	print(goAwayTime)
+#	print(goAwayTime)
 	awayTimer.wait_time = goAwayTime
 	animationPlayer.play("blockIn")
 
@@ -36,6 +37,32 @@ func _ready():
 
 func _process(delta):
 	_setTimer()
+
+#func _get_score():
+#	return Globals.score
+#
+func _add_ten():
+	for n in 10:
+		Globals.score += 1
+
+func _count(given_number):
+	var rounded_number = int(round(given_number))
+
+func _destroyed():
+	var sound = load("res://assets/soundEffects/pointBreakSound.wav")
+	soundEffect.stream = sound
+	soundEffect.play()
+
+	_add_ten()
+#	Globals.score += 10#tween the score
+	sprite.visible = false
+	label.visible = false
+	hurtAreaShape.call_deferred("set_disabled", true)
+	collisionShape.call_deferred("set_disabled", true)
+	canPlaceShape.call_deferred("set_disabled", true)
+	particles.emitting = true
+	particles.one_shot = true
+	deadTimer.start()
 
 func _setTimer():
 	if timerSwitch == false:
@@ -56,18 +83,7 @@ func _placed():
 	collisionShape.disabled = false
 	timerSwitch = true
 
-func _destroyed():
-	var sound = load("res://assets/soundEffects/pointBreakSound.wav")
-	soundEffect.stream = sound
-	soundEffect.play()
-	Globals.score += 10
-	sprite.visible = false
-	label.visible = false
-	hurtAreaShape.call_deferred("set_disabled", true)
-	collisionShape.call_deferred("set_disabled", true)
-	particles.emitting = true
-	particles.one_shot = true
-	deadTimer.start()
+
 
 func _gone():
 	queue_free() #add animation here
@@ -79,7 +95,8 @@ func _on_on_timer_timeout():
 
 func _on_away_timer_timeout():
 	#start like this now may remove it _debug
-	collisionShape.disabled = true
+	canPlaceShape.disabled = true
+	collisionShape.disabled = true #disabled it
 	animationPlayer.play("blockOut")
 
 
@@ -89,3 +106,4 @@ func _on_hurt_area_body_entered(body):
 
 func _on_dead_timer_timeout():
 	queue_free()
+

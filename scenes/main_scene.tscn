@@ -126,3 +126,6 @@ visible = false
 
 [connection signal="timeout" from="newHurtBlock" to="." method="_on_new_hurt_block_timeout"]
 [connection signal="timeout" from="newCoinBlock" to="." method="_on_new_coin_block_timeout"]
+[connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/restartButton" to="." method="_on_restart_button_pressed"]
+
+[editable path="CanvasLayer/Pause"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dy2mqxg2v1g2b"]
+[gd_scene load_steps=13 format=3 uid="uid://dy2mqxg2v1g2b"]
 
 [ext_resource type="Script" path="res://assets/scripts/pause.gd" id="1_8hhid"]
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="1_vcupu"]
 [ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="3_k6bkh"]
+[ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="3_nyljn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uoe7q"]
 bg_color = Color(0.819608, 0.317647, 0.933333, 1)
@@ -93,6 +94,12 @@ theme = ExtResource("1_vcupu")
 theme_override_font_sizes/font_size = 75
 text = "Resume"
 
+[node name="restartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_nyljn")
+theme_override_font_sizes/font_size = 75
+text = "Restart"
+
 [node name="MainMenu" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("3_k6bkh")
@@ -106,8 +113,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -424.0
-offset_top = -295.0
+offset_left = -586.0
+offset_top = -301.0
 offset_right = -36.0
 offset_bottom = -45.0
 grow_horizontal = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bp6xt6d8l8q2s"]
+[gd_scene load_steps=13 format=3 uid="uid://bp6xt6d8l8q2s"]
 
 [ext_resource type="Script" path="res://assets/scripts/pointBlock.gd" id="1_6ari2"]
 [ext_resource type="Texture2D" uid="uid://dtc3sa5vx2h7o" path="res://assets/sprites/blocks.PNG" id="2_r2j4s"]
@@ -11,6 +11,9 @@ point_count = 3
 colors = PackedColorArray(0.968627, 0.780392, 0.337255, 0.533333, 0.968627, 0.780392, 0.337255, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_68hl5"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s58dg"]
 size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o157c"]
@@ -133,6 +136,13 @@ vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_68hl5")
+
+[node name="canPlaceArea" type="Area2D" parent="."]
+collision_layer = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="canPlaceArea"]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_s58dg")
 
 [node name="onTimer" type="Timer" parent="."]
 wait_time = 3.0

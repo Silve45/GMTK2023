@@ -2,13 +2,17 @@ extends RigidBody2D
 @export_group("speed")
 @export var xVelocity = 200
 @export var yVelocity = 200
+@export var set_begin_speed = 1.0
 
 @onready var sprite = $Sprite2D
 @onready var particles = $CPUParticles2D
 @onready var deathTimer = $CPUParticles2D/deathTimer
 @onready var soundEffect = $AudioStreamPlayer
 
+signal sendSpeed
+
 var velocity = Vector2()
+var speed
 
 var maxVelocity = null 
 var minVelocity = null
@@ -16,82 +20,20 @@ var minVelocity = null
 #var maxVelocity = Vector2(200, 200)
 
 func _ready():
+	speed = set_begin_speed
 	deathTimer.set_wait_time(particles.get_lifetime())
 	velocity = Vector2(xVelocity ,yVelocity)
 
 
 func _process(delta):
-	pass
-#	_speed_up()
-#	print(Globals.score)
-#	var maxMin = str( "max min are ",maxVelocity,", ", minVelocity)
-#	var speedNow = str( "speed is now ",velocity.x,", ", velocity.y)
-#	print(maxMin)
-#	print(speedNow)
-#	_cap_speed()
-
-func _cap_speed():
-	#maxSpeed
-	if velocity.x >= maxVelocity:
-		velocity.x = maxVelocity
-	
-	if velocity.y >= maxVelocity:
-		velocity.y = maxVelocity
-		
-	#minSpeed
-	if velocity.x <= minVelocity:
-		velocity.x = minVelocity
-	
-	if velocity.y <= minVelocity:
-		velocity.y = minVelocity
-
-var one = false
-var two = false
-var three = false 
-var four = false 
-var five = false
-func _speed_up():
-	if Globals.score == 10 and one == false:
-		one = true
-		_speed_up_logic()
-	if Globals.score == 20 and two == false:
-		two = true
-		_speed_up_logic()
-	if Globals.score == 30 and three == false:
-		three = true
-		_speed_up_logic()
-	if Globals.score == 40 and four == false:
-		four = true
-		_speed_up_logic()
-	if Globals.score == 50 and five == false:
-		five = true
-		_speed_up_logic()
-
-
-
-func _speed_up_logic():
-	if velocity.x > 0:
-		velocity.x += 100
-	if velocity.x < 0:
-		velocity.x -= 100
-	
-	if velocity.y > 0:
-		velocity.y += 100
-	if velocity.y < 0:
-		velocity.y -= 100
-	
-	maxVelocity += 100
-	minVelocity -= 100
-	print("speed up!!")
-#	xVelocity +=100
-##	yVelocity += 100
-#	velocity = Vector2(xVelocity ,yVelocity)
+	_speed_up()
 
 func _physics_process(delta):
-	_movementStuff(delta)
+	_movementStuff(delta )
+
 
 func _movementStuff(delta):
-	var collision_info = move_and_collide(velocity * delta)
+	var collision_info = move_and_collide(velocity * delta * speed)
 	if collision_info: 
 		velocity = velocity.bounce(collision_info.get_normal())
 		
@@ -126,7 +68,66 @@ func _bounceSound():
 	soundEffect.stream = bounceSound
 	soundEffect.play()
 
-
-
 func _on_sound_box_body_entered(body):
 	_bounceSound()
+
+var one = false
+var two = false 
+var three = false
+var four = false
+var five = false
+var six = false
+var seven = false
+var eight = false
+func _speed_up():
+	if Globals.score >= 25 and one == false:
+		emit_signal("sendSpeed")
+		one = true
+		speed = 1.05
+	elif Globals.score >= 50 and two == false:
+		emit_signal("sendSpeed")
+		two = true
+		speed = 1.1
+	elif Globals.score >= 100 and three == false:
+		emit_signal("sendSpeed")
+		three = true
+		speed = 1.15
+	elif Globals.score >= 150 and four == false:
+		emit_signal("sendSpeed")
+		four = true
+		speed = 1.2
+	elif Globals.score >= 175 and five == false:
+		emit_signal("sendSpeed")
+		five = true
+		speed = 1.25
+	elif Globals.score >= 200 and six == false:
+		emit_signal("sendSpeed")
+		six = true
+		speed = 1.3
+	elif Globals.score >= 250 and seven == false:
+		emit_signal("sendSpeed")
+		seven = true
+		speed = 1.35
+	elif Globals.score >= 300 and eight == false:
+		emit_signal("sendSpeed")
+		eight = true
+		speed = 1.4
+#	match [Globals.score]:#needs slight fixing. if it goes over the num it doesn't update speed
+#		[1]:#needs to be 25
+#			speed = 1.15
+#			emit_signal("sendSpeed")
+#		[15]: #needs to be 50
+#			speed = 1.3
+#			emit_signal("sendSpeed")
+#		[35]:#100
+#			speed = 1.45
+#			emit_signal("sendSpeed")
+#		[55]:#150
+#			speed = 1.75
+#			emit_signal("sendSpeed")
+#		[75]:#175
+#			speed = 1.85
+#			emit_signal("sendSpeed")
+#		[100]:#200
+#			speed = 2
+#			emit_signal("sendSpeed")

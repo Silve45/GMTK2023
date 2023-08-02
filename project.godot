@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK game Jam 2023"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/main_scene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.0941176, 0.0941176, 0.0941176, 1)
 boot_splash/show_image=false
@@ -77,6 +77,10 @@ toggle_fullscreen={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"echo":false,"script":null)
 ]
 }
+addDoubleClick={
+"deadzone": 0.5,
+"events": []
+}
 
 [input_devices]
 
@@ -89,6 +93,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_3="ball_player"
 2d_physics/layer_4="enemies"
 2d_physics/layer_5="collectibles"
+2d_physics/layer_6="canPlaceExtra"
 
 [rendering]
 

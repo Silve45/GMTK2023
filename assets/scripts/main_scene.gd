@@ -12,7 +12,6 @@ var mouseY = null
 var add : Node2D
 var what = null
 
-
 var blockNum = 0
 var stringBlock = null
 var block = "res://scenes/blocks/block.tscn"
@@ -47,7 +46,6 @@ func _stop_song():
 	else:
 		MusicController._stop_music()
 
-
 func _pause():
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = true
@@ -70,19 +68,19 @@ func _block_track():
 		blockHold.add_child(add)
 		_increment_block()
 
-#
 func _input(event):
 	if OS.get_name() == "Windows" || OS.get_name() == "macOS":
-		print("not mobile")
+		_controller(event, 1)
+	if OS.get_name() == "Android" || OS.get_name() == "iOS":
+		_controller(event, 2)
+
+func _controller(event, whichOne):
+	if whichOne == 1:
 		if event.is_action_pressed("addClick") and add != null and Globals.dead == false:
 			add._placed()
-	if OS.get_name() == "Android" || OS.get_name() == "iOS":
-		print("mobile")
+	if whichOne == 2:
 		if event is InputEventMouseButton and event.double_click and add != null and Globals.dead == false:
 			add._placed()
-
-		
-
 
 func _spawn_hurt_block():
 	if Globals.dead == false:
@@ -101,7 +99,7 @@ func _on_new_hurt_block_timeout():
 func _spawn_point_block():
 	if Globals.dead == false:
 		var rng2 = RandomNumberGenerator.new()
-		var time = rng2.randi_range(4, 7)
+		var time = rng2.randi_range(1, 7)
 		newCoinBlockTimer.wait_time = time
 		newCoinBlockTimer.start()
 
@@ -112,9 +110,6 @@ func _on_new_coin_block_timeout():
 		scoreHold.add_child(where)
 	_spawn_point_block()
 
-
-
-
 func _maxHurtBlock():#you may need to change these later _debug
 	if Globals.score >= 35:
 		Globals.maxHurtBlockCount = 4
@@ -122,9 +117,6 @@ func _maxHurtBlock():#you may need to change these later _debug
 		Globals.maxHurtBlockCount = 5
 	if Globals.score >= 125:
 		Globals.maxHurtBlockCount = 6
-	
-
-
 
 func _increment_block():
 	var click = true
@@ -142,6 +134,5 @@ func _mouse_position():
 	mouseX = get_viewport().get_mouse_position().x
 	mouseY = get_viewport().get_mouse_position().y
 
-
-
-
+func _on_restart_button_pressed():
+	get_tree().reload_current_scene()

@@ -8,8 +8,8 @@ var minSpeed = speed
 func _ready():
 	pass
 
-func _process(delta):
-	print(vel)
+#func _process(delta):
+#	print(vel)
 
 
 func _physics_process(delta):
