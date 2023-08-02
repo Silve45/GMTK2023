@@ -3,8 +3,10 @@ extends Node2D
 @onready var blockHold = $blockHolder
 @onready var enemyHold = $enemyHolder
 @onready var scoreHold = $scoreBlockHolder
+@onready var spinHold = $spinBlockHolder
 @onready var newHurtBlockTimer = $newHurtBlock
 @onready var newCoinBlockTimer = $newCoinBlock
+@onready var newSpinTimer = $newSpinBlock
 
 var mouseX = null
 var mouseY = null
@@ -21,24 +23,30 @@ var spinningBlock = "res://scenes/spinner.tscn"
 var hurtBlock = "res://scenes/hazards/hurtBlock.tscn"
 var coinBlock = "res://scenes/blocks/pointBlock.tscn"
 
+var maxSpinHold = 1
+var harmSpinBlock = "res://scenes/hazards/around_the_screen.tscn"
+var pointSpinBlock #maybe later
+
 func _ready():
 	MusicController._play_song(1)
 	Globals._reset()
 	_spawn_hurt_block()
 	_spawn_point_block()
+	_spawn_spin_block()
 
 func _process(delta):
-	#begin mouse stuff _debug
 	_mouse_position()
-#	var mouseLocation = str(mouseX, ": ", mouseY)
-#	label.set_text(mouseLocation)
-	#end mouse stuff
 	_stop_song()#stops song at end
 	if Globals.dead == false:
 		_choosenBlock()
 		_block_track()
 		_maxHurtBlock()
+		_increaseMaxSpinBlock()
 		_pause()
+
+func _increaseMaxSpinBlock():
+	if Globals.score >= 200:
+		maxSpinHold = 2
 
 func _stop_song():
 	if Globals.dead == false:
@@ -88,7 +96,8 @@ func _spawn_hurt_block():
 		var time = rng2.randi_range(1, 4)
 		newHurtBlockTimer.wait_time = time
 		newHurtBlockTimer.start()
-		
+
+
 func _on_new_hurt_block_timeout():
 	if enemyHold.get_child_count() < Globals.maxHurtBlockCount:
 		var block = load(hurtBlock)
@@ -96,6 +105,7 @@ func _on_new_hurt_block_timeout():
 		enemyHold.add_child(where)
 	_spawn_hurt_block()
 	
+
 func _spawn_point_block():
 	if Globals.dead == false:
 		var rng2 = RandomNumberGenerator.new()
@@ -109,6 +119,28 @@ func _on_new_coin_block_timeout():
 		var where = block.instantiate()
 		scoreHold.add_child(where)
 	_spawn_point_block()
+
+func _spawn_spin_block():
+	if Globals.dead == false:
+		var rng2 = RandomNumberGenerator.new()
+		var time = rng2.randi_range(5, 8)#should be 5,8
+		newSpinTimer.wait_time = time
+		newSpinTimer.start()
+
+func _on_new_spin_block_timeout():
+	if spinHold.get_child_count() < maxSpinHold: #and Globals.points >= 75:
+		var rng2 = RandomNumberGenerator.new()
+		var pick = rng2.randi_range(1, 9)#add 10 for a speical point block
+		var pickedBlock
+		match [pick]:
+			[1], [2], [3], [4], [5], [6], [7], [8], [9]:
+				pickedBlock = harmSpinBlock
+			[10]:
+				pickedBlock = pointSpinBlock
+		var block = load(pickedBlock)
+		var where = block.instantiate()
+		spinHold.add_child(where)
+	_spawn_spin_block()
 
 func _maxHurtBlock():#you may need to change these later _debug
 	if Globals.score >= 35:
@@ -136,3 +168,6 @@ func _mouse_position():
 
 func _on_restart_button_pressed():
 	get_tree().reload_current_scene()
+
+
+

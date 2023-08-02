@@ -1,0 +1,246 @@
+[gd_scene load_steps=11 format=3 uid="uid://bmjj3pr6rpb3"]
+
+[ext_resource type="Script" path="res://assets/scripts/aroundTheScreen.gd" id="1_64xxj"]
+[ext_resource type="Texture2D" uid="uid://cmaap1frd4ipt" path="res://assets/sprites/arrow.PNG" id="2_7743n"]
+[ext_resource type="Texture2D" uid="uid://dtc3sa5vx2h7o" path="res://assets/sprites/blocks.PNG" id="2_tlx1c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvu4d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vov0l"]
+size = Vector2(14.6429, 13.2143)
+
+[sub_resource type="Animation" id="Animation_bspfr"]
+resource_name = "spin"
+length = 1.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arrow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_jdj0g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.8, 2.8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("arrow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ball_detect_move/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_b7o6y"]
+resource_name = "begin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(3, 3), Vector2(2.8, 2.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arrow:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_o7a0b"]
+resource_name = "end"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.8, 2.8), Vector2(3, 3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iohy6"]
+_data = {
+"RESET": SubResource("Animation_jdj0g"),
+"begin": SubResource("Animation_b7o6y"),
+"end": SubResource("Animation_o7a0b"),
+"spin": SubResource("Animation_bspfr")
+}
+
+[node name="aroundTheScreenEnemy" type="CharacterBody2D"]
+scale = Vector2(2.8, 2.8)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_64xxj")
+
+[node name="arrow" type="Sprite2D" parent="."]
+modulate = Color(0.964706, 0.466667, 0.376471, 1)
+texture_filter = 1
+position = Vector2(1.49867, -28.7744)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7743n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.901961, 0.305882, 0.207843, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tlx1c")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_vvu4d")
+disabled = true
+
+[node name="ball_detect_move" type="Area2D" parent="."]
+position = Vector2(18.9286, 0.357143)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball_detect_move"]
+position = Vector2(-0.142859, -2.38419e-07)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_vov0l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_iohy6")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = -6.07143
+offset_top = -14.2857
+offset_right = 107.929
+offset_bottom = 261.714
+scale = Vector2(0.1, 0.1)
+theme_override_font_sizes/font_size = 200
+text = "1"
+
+[connection signal="body_entered" from="ball_detect_move" to="." method="_on_ball_detect_move_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

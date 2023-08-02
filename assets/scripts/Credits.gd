@@ -19,3 +19,13 @@ func _on_button_pressed():
 func _on_button_2_pressed():
 	OS.shell_open("https://pixabay.com/music/beats-plug-156524/")
 
+
+
+
+
+func _on_privacy_button_pressed():
+	OS.shell_open("https://shinystarsgames.squarespace.com/privacy-policy?p")
+
+
+func _on_credits_button_pressed():
+	OS.shell_open("https://shinystarsgames.squarespace.com/credits-yatw?p")

@@ -112,22 +112,3 @@ func _speed_up():
 		emit_signal("sendSpeed")
 		eight = true
 		speed = 1.4
-#	match [Globals.score]:#needs slight fixing. if it goes over the num it doesn't update speed
-#		[1]:#needs to be 25
-#			speed = 1.15
-#			emit_signal("sendSpeed")
-#		[15]: #needs to be 50
-#			speed = 1.3
-#			emit_signal("sendSpeed")
-#		[35]:#100
-#			speed = 1.45
-#			emit_signal("sendSpeed")
-#		[55]:#150
-#			speed = 1.75
-#			emit_signal("sendSpeed")
-#		[75]:#175
-#			speed = 1.85
-#			emit_signal("sendSpeed")
-#		[100]:#200
-#			speed = 2
-#			emit_signal("sendSpeed")

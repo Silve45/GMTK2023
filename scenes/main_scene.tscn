@@ -107,12 +107,18 @@ text = "x:y"
 
 [node name="scoreBlockHolder" type="Node2D" parent="."]
 
+[node name="spinBlockHolder" type="Node2D" parent="."]
+position = Vector2(54, 1012)
+
 [node name="rigidCircle" parent="." instance=ExtResource("4_r0jip")]
 
 [node name="newHurtBlock" type="Timer" parent="."]
 one_shot = true
 
 [node name="newCoinBlock" type="Timer" parent="."]
+one_shot = true
+
+[node name="newSpinBlock" type="Timer" parent="."]
 one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -126,6 +132,7 @@ visible = false
 
 [connection signal="timeout" from="newHurtBlock" to="." method="_on_new_hurt_block_timeout"]
 [connection signal="timeout" from="newCoinBlock" to="." method="_on_new_coin_block_timeout"]
+[connection signal="timeout" from="newSpinBlock" to="." method="_on_new_spin_block_timeout"]
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/restartButton" to="." method="_on_restart_button_pressed"]
 
 [editable path="CanvasLayer/Pause"]

@@ -1,42 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d18sjlorv2qat"]
+[gd_scene load_steps=6 format=3 uid="uid://d18sjlorv2qat"]
 
 [ext_resource type="Script" path="res://assets/scripts/controlsDisplay.gd" id="1_g3l2j"]
 [ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="2_7fwxq"]
 [ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="2_w23hx"]
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="3_jx7il"]
 [ext_resource type="Texture2D" uid="uid://d104igbx1ev2f" path="res://icon.svg" id="4_1rw1v"]
-
-[sub_resource type="FontFile" id="FontFile_lpgs8"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/16/0/kerning_overrides/75/0 = Vector2(0, 0)
-cache/0/50/0/ascent = 0.0
-cache/0/50/0/descent = 0.0
-cache/0/50/0/underline_position = 0.0
-cache/0/50/0/underline_thickness = 0.0
-cache/0/50/0/scale = 1.0
-cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/50/0/kerning_overrides/75/0 = Vector2(0, 0)
-cache/0/75/0/ascent = 0.0
-cache/0/75/0/descent = 0.0
-cache/0/75/0/underline_position = 0.0
-cache/0/75/0/underline_thickness = 0.0
-cache/0/75/0/scale = 1.0
-cache/0/75/0/kerning_overrides/16/0 = Vector2(0, 0)
-cache/0/75/0/kerning_overrides/50/0 = Vector2(0, 0)
-cache/0/75/0/kerning_overrides/75/0 = Vector2(0, 0)
 
 [node name="controlsDisplay" type="Control"]
 layout_mode = 3
@@ -85,7 +53,6 @@ offset_right = 263.0
 offset_bottom = -95.0
 grow_vertical = 0
 theme = ExtResource("2_7fwxq")
-theme_override_fonts/font = SubResource("FontFile_lpgs8")
 theme_override_font_sizes/font_size = 75
 text = "  <   "
 
@@ -100,7 +67,6 @@ offset_right = 1022.0
 offset_bottom = -918.0
 grow_vertical = 0
 theme = ExtResource("2_w23hx")
-theme_override_fonts/font = SubResource("FontFile_lpgs8")
 theme_override_font_sizes/font_size = 75
 text = "X"
 
@@ -118,7 +84,6 @@ offset_bottom = -95.0
 grow_horizontal = 0
 grow_vertical = 0
 theme = ExtResource("3_jx7il")
-theme_override_fonts/font = SubResource("FontFile_lpgs8")
 theme_override_font_sizes/font_size = 75
 text = "  >   "
 
