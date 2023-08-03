@@ -67,6 +67,7 @@ func _bounceSound():
 	var bounceSound = load("res://assets/soundEffects/ballHitOffBlock.wav")
 	soundEffect.stream = bounceSound
 	soundEffect.play()
+	$"../gameCamera"._apply_shake()
 
 func _on_sound_box_body_entered(body):
 	_bounceSound()

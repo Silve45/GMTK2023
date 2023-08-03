@@ -24,6 +24,7 @@ offset_right = 961.0
 offset_bottom = 537.0
 
 [node name="Wall" type="Node2D" parent="."]
+modulate = Color(0.152941, 0.152941, 0.152941, 1)
 
 [node name="invisibleBorderWall" type="Node2D" parent="Wall"]
 
@@ -91,6 +92,8 @@ vframes = 2
 position = Vector2(960, 540)
 script = ExtResource("1_ay4xj")
 backgroundColor = Color(0.0941176, 0.0941176, 0.0941176, 1)
+noise_shake_speed = 10.0
+noise_shake_strength = 10.0
 
 [node name="Label" type="Label" parent="."]
 visible = false
