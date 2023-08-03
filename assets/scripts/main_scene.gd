@@ -123,12 +123,12 @@ func _on_new_coin_block_timeout():
 func _spawn_spin_block():
 	if Globals.dead == false:
 		var rng2 = RandomNumberGenerator.new()
-		var time = rng2.randi_range(5, 8)#should be 5,8
+		var time = rng2.randi_range(15, 25)#should be 15,25
 		newSpinTimer.wait_time = time
 		newSpinTimer.start()
 
 func _on_new_spin_block_timeout():
-	if spinHold.get_child_count() < maxSpinHold: #and Globals.points >= 75:
+	if spinHold.get_child_count() < maxSpinHold and Globals.score >= 85:
 		var rng2 = RandomNumberGenerator.new()
 		var pick = rng2.randi_range(1, 9)#add 10 for a speical point block
 		var pickedBlock

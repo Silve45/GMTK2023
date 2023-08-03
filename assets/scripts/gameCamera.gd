@@ -23,8 +23,13 @@ func _ready():
 	noise.seed = rand.randi()
 	noise.frequency = .6
 
-func _apply_shake():
-	shake_strength = noise_shake_strength
+func _apply_shake(inputStrength, inputFrequency):
+	if inputStrength == 0 and inputFrequency == 0:
+		shake_strength = noise_shake_strength
+	elif inputStrength > 0 and inputFrequency > 0:
+		shake_strength = inputStrength
+		noise.frequency = inputFrequency
+	
 
 func _process(delta):
 	shake_strength = lerp(shake_strength, 0.0, shake_decay_rate * delta)

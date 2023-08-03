@@ -50,6 +50,7 @@ func _dead():
 	var deathSound = load("res://assets/soundEffects/breakSoundEffect.wav")
 	soundEffect.stream = deathSound
 	soundEffect.play()
+	$"../gameCamera"._apply_shake(100, 10)
 	particles.emitting = true
 	particles.one_shot = true
 	sprite.visible = false
@@ -67,7 +68,7 @@ func _bounceSound():
 	var bounceSound = load("res://assets/soundEffects/ballHitOffBlock.wav")
 	soundEffect.stream = bounceSound
 	soundEffect.play()
-	$"../gameCamera"._apply_shake()
+	$"../gameCamera"._apply_shake(0,0)
 
 func _on_sound_box_body_entered(body):
 	_bounceSound()
