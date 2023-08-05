@@ -1,5 +1,7 @@
 extends Node
 
+const save_file = "user://save.data"
+
 var score = int(0)
 var bestScore = int(0)
 var dead = false
@@ -47,6 +49,7 @@ func _ball_color(ballNum):
 
 func _ready():
 	changeColorTimer.start()
+	_load()
 
 func _on_change_color_timer_timeout():
 	var finalColor
@@ -57,7 +60,6 @@ func _on_change_color_timer_timeout():
 			incrementColorNum = 1
 			
 	finalColor = _ball_color(incrementColorNum)
-	print(incrementColorNum)
 	timerColor = finalColor
 
 func _reset():
@@ -75,7 +77,6 @@ func _best_score():
 	if score >= bestScore:
 		bestScore = score
 
-
 func _fullScreen():
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		if fullScreen == false:
@@ -84,3 +85,25 @@ func _fullScreen():
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 			fullScreen = false
+
+#save things
+func _save():
+	var file = FileAccess.open(save_file, FileAccess.WRITE)
+	var player_data = create_player_data()
+	file.store_var(player_data)
+	file.close()#me
+
+func _load():
+	var file = FileAccess.open(save_file, FileAccess.READ)
+	if FileAccess.file_exists(save_file):
+		var loaded_player_data = file.get_var()
+		bestScore = loaded_player_data.HIGHSCORE
+		ballColorNum = loaded_player_data.BALLCOLOR
+		file.close()
+
+func create_player_data():
+	var player_dict = {
+		"HIGHSCORE" : bestScore,
+		"BALLCOLOR" : ballColorNum
+	}
+	return player_dict

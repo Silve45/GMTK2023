@@ -72,5 +72,3 @@ func _hide_quit():
 		$ColorRect/VBoxContainer/quitGameButton.visible = false
 	else:
 		pass
-
-

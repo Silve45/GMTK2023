@@ -62,6 +62,7 @@ func _dead():
 	velocity = Vector2.ZERO
 	Globals.dead = true#sets dead here *changed
 	deathTimer.start()#frees it
+	Globals._save()
 
 
 func _on_death_timer_timeout():
