@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdd8a4t6twnvr"]
+
+[ext_resource type="Script" path="res://assets/scripts/StoreButton.gd" id="1_btqje"]
+[ext_resource type="Texture2D" uid="uid://coejmsd3aaaua" path="res://assets/sprites/circle.PNG" id="3_mvrn8"]
+[ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="4_yd0ni"]
+
+[node name="circleStoreButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_btqje")
+buttonNum = 7
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 125
+text = "color"
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(512, 512)
+layout_mode = 2
+color = Color(0.85098, 0.85098, 0.85098, 0.0666667)
+
+[node name="ball" type="TextureRect" parent="VBoxContainer/ColorRect"]
+custom_minimum_size = Vector2(648, 486)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -324.0
+offset_top = -17.0
+offset_right = 324.0
+offset_bottom = 469.0
+grow_horizontal = 2
+texture = ExtResource("3_mvrn8")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -168.5
+offset_top = -120.0
+offset_right = 168.5
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_yd0ni")
+theme_override_font_sizes/font_size = 75
+text = "use color"
+
+[connection signal="pressed" from="VBoxContainer/ColorRect/Button" to="." method="_on_button_pressed"]

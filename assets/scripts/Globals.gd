@@ -9,6 +9,37 @@ var controlsScreenOn = false
 var fullScreen = false
 var creditsScreenOn = false
 
+#stuff for store
+#var ballColor = ""
+var ballColorNum = 0
+
+func _ball_color(ballNum):
+	var ballColor
+	match[ballNum]:
+		[0]:
+			ballColor = "ffffff"#white
+		[1]:
+			ballColor = "ffffff"#white
+		[2]:
+			ballColor = "e67a30"#orange
+		[3]:
+			ballColor = "f873e4"#pink
+		[4]:
+			ballColor = "4dcced"#light blue
+		[5]:
+			ballColor = "a86437"#brown
+		[6]:
+			ballColor = "f7c756"#yellow
+		[7]:
+			ballColor = "306082"#darker blue
+		[8]:
+			ballColor = "99e550"#lighter green
+		[9]:
+			ballColor = "d151ee"#purple
+		[10]:
+			ballColor = "f25a5a"#lighter red
+	return ballColor
+
 func _reset():
 	score = 0
 	newScore = 0

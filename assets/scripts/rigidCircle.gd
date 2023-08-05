@@ -27,6 +27,11 @@ func _ready():
 
 func _process(delta):
 	_speed_up()
+	_set_ball_color()
+
+#sets the balls color
+func _set_ball_color():
+	sprite.modulate = Globals._ball_color(Globals.ballColorNum)
 
 func _physics_process(delta):
 	_movementStuff(delta )
