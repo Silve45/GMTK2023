@@ -30,6 +30,10 @@ func _on_controls_button_pressed():
 func _on_credits_button_pressed():
 	Globals.creditsScreenOn = true
 
+
+func _on_store_button_pressed():
+	Globals.storeScreenOn = true
+
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "beginningAnimation":
 		muteButtons.visible = true
@@ -68,3 +72,5 @@ func _hide_quit():
 		$ColorRect/VBoxContainer/quitGameButton.visible = false
 	else:
 		pass
+
+

@@ -1,17 +1,20 @@
 extends Node
 
 var score = int(0)
-var newScore = int(0)
 var bestScore = int(0)
 var dead = false
 var maxHurtBlockCount = 3
 var controlsScreenOn = false
 var fullScreen = false
 var creditsScreenOn = false
+var storeScreenOn = false
 
 #stuff for store
 #var ballColor = ""
-var ballColorNum = 0
+var ballColorNum = 1 #default color
+var incrementColorNum = 1
+var timerColor = "ffffff"
+@onready var changeColorTimer = $changeColorTimer
 
 func _ball_color(ballNum):
 	var ballColor
@@ -37,12 +40,28 @@ func _ball_color(ballNum):
 		[9]:
 			ballColor = "d151ee"#purple
 		[10]:
-			ballColor = "f25a5a"#lighter red
+			ballColor = "e64e35"#lighter red
+		[11]:
+			ballColor = timerColor
 	return ballColor
+
+func _ready():
+	changeColorTimer.start()
+
+func _on_change_color_timer_timeout():
+	var finalColor
+	if incrementColorNum < 11:
+		if incrementColorNum < 10:
+			incrementColorNum += 1
+		elif incrementColorNum == 10:
+			incrementColorNum = 1
+			
+	finalColor = _ball_color(incrementColorNum)
+	print(incrementColorNum)
+	timerColor = finalColor
 
 func _reset():
 	score = 0
-	newScore = 0
 	maxHurtBlockCount = 3
 	dead = false
 	controlsScreenOn = false

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://p67m4folw68"]
+[gd_scene load_steps=4 format=3 uid="uid://p67m4folw68"]
 
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="1_8tbvy"]
+[ext_resource type="Script" path="res://assets/scripts/store.gd" id="1_uam8a"]
 [ext_resource type="PackedScene" uid="uid://cdd8a4t6twnvr" path="res://scenes/circle_store_button.tscn" id="2_tv12t"]
 
 [node name="Store" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_uam8a")
 metadata/_edit_vertical_guides_ = []
 
 [node name="backGround" type="ColorRect" parent="."]
@@ -19,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.882353)
+color = Color(0, 0, 0, 1)
 
 [node name="Play" type="Button" parent="."]
 layout_mode = 1
@@ -57,11 +59,60 @@ vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
-theme_override_constants/separation = 600
+theme_override_constants/separation = 50
 
-[node name="circleStoreButton" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+[node name="CircleStoreButton" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
 layout_mode = 2
 buttonNum = 1
 
-[node name="circleStoreButton2" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+[node name="CircleStoreButton2" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
 layout_mode = 2
+buttonNum = 2
+scoreNeeded = 100
+
+[node name="CircleStoreButton3" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+layout_mode = 2
+buttonNum = 3
+scoreNeeded = 200
+
+[node name="CircleStoreButton4" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+layout_mode = 2
+buttonNum = 4
+scoreNeeded = 300
+
+[node name="CircleStoreButton5" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+layout_mode = 2
+buttonNum = 5
+scoreNeeded = 400
+
+[node name="CircleStoreButton6" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+layout_mode = 2
+buttonNum = 6
+scoreNeeded = 500
+
+[node name="CircleStoreButton7" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+layout_mode = 2
+buttonNum = 7
+scoreNeeded = 600
+
+[node name="CircleStoreButton8" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+layout_mode = 2
+buttonNum = 8
+scoreNeeded = 700
+
+[node name="CircleStoreButton9" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+layout_mode = 2
+buttonNum = 9
+scoreNeeded = 800
+
+[node name="CircleStoreButton10" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+layout_mode = 2
+buttonNum = 10
+scoreNeeded = 900
+
+[node name="CircleStoreButton11" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
+layout_mode = 2
+buttonNum = 11
+scoreNeeded = 1000
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

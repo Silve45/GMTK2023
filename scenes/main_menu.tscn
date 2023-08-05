@@ -1,31 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://s3h85vfvlf6f"]
+[gd_scene load_steps=15 format=3 uid="uid://s3h85vfvlf6f"]
 
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="1_0ha85"]
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_qqjfa"]
 [ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="3_1phq5"]
 [ext_resource type="Texture2D" uid="uid://d4ivqpqcoluh7" path="res://assets/sprites/explosion.jpg" id="3_6s5wj"]
+[ext_resource type="Theme" uid="uid://ckxcu0bubxpay" path="res://resources/themes/greenButtonTheme.tres" id="4_cco0k"]
+[ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="5_m8443"]
 [ext_resource type="Theme" uid="uid://bkjd5fsif2jc4" path="res://resources/themes/purpleButtonTheme.tres" id="6_hswut"]
 [ext_resource type="PackedScene" uid="uid://d18sjlorv2qat" path="res://scenes/controls_display.tscn" id="6_jocdf"]
 [ext_resource type="Theme" uid="uid://c1qqdixabqoy3" path="res://resources/themes/orangeButtonTheme.tres" id="7_cs8ng"]
 [ext_resource type="PackedScene" uid="uid://cgv46fsa53026" path="res://scenes/credits.tscn" id="9_4nkca"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g32lh"]
-bg_color = Color(0.290196, 0.890196, 0.392157, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fhr1"]
-bg_color = Color(0.290196, 0.890196, 0.392157, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q57ef"]
-bg_color = Color(0.364706, 0.980392, 0.458824, 1)
-
-[sub_resource type="Theme" id="Theme_bmeet"]
-Button/styles/hover = SubResource("StyleBoxFlat_g32lh")
-Button/styles/normal = SubResource("StyleBoxFlat_0fhr1")
-Button/styles/pressed = SubResource("StyleBoxFlat_q57ef")
+[ext_resource type="PackedScene" uid="uid://p67m4folw68" path="res://scenes/store.tscn" id="11_sygig"]
 
 [sub_resource type="Animation" id="Animation_vjofl"]
 length = 0.001
@@ -247,10 +232,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -158.0
-offset_top = 40.0
-offset_right = 119.0
-offset_bottom = 390.0
+offset_left = -173.0
+offset_top = -15.5
+offset_right = 134.0
+offset_bottom = 471.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
@@ -267,9 +252,15 @@ theme = ExtResource("3_1phq5")
 theme_override_font_sizes/font_size = 75
 text = "Controls"
 
+[node name="storeButton" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_cco0k")
+theme_override_font_sizes/font_size = 75
+text = "Store"
+
 [node name="creditsButton" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-theme = SubResource("Theme_bmeet")
+theme = ExtResource("5_m8443")
 theme_override_font_sizes/font_size = 75
 text = "Credits"
 
@@ -368,11 +359,15 @@ visible = false
 [node name="Credits" parent="CanvasLayer" instance=ExtResource("9_4nkca")]
 visible = false
 
+[node name="Store" parent="CanvasLayer" instance=ExtResource("11_sygig")]
+visible = false
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/playGameButton" to="." method="_on_play_game_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/controlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/storeButton" to="." method="_on_store_button_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/creditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="MuteButtons/MuteMusic" to="." method="_on_mute_music_pressed"]

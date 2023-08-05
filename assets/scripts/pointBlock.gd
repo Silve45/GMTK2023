@@ -96,7 +96,7 @@ func _on_on_timer_timeout():
 func _on_away_timer_timeout():
 	#start like this now may remove it _debug
 	canPlaceShape.disabled = true
-	collisionShape.disabled = true #disabled it
+	collisionShape.call_deferred("set_disabled", true) #disabled it
 	animationPlayer.play("blockOut")
 
 

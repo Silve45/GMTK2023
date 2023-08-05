@@ -20,8 +20,8 @@ config/windows_native_icon="res://finalIcon.ico"
 
 [autoload]
 
-Globals="*res://assets/scripts/Globals.gd"
 MusicController="*res://scenes/music_controller.tscn"
+Globals="*res://scenes/globals.tscn"
 
 [display]
 

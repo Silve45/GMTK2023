@@ -26,11 +26,15 @@ func _on_restart_button_pressed():
 func _on_menu_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
-func _on_quit_game_button_pressed():
-	get_tree().quit()
+func _on_store_button_pressed():
+	Globals.storeScreenOn = true
 
 func _hide_quit():
 	if (OS.get_name() == "web"):
 		$VBoxContainer/quitGameButton.visible = false
 	else:
 		pass
+
+#func _on_quit_game_button_pressed():
+#	get_tree().quit()
+
