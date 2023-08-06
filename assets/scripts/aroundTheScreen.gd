@@ -34,6 +34,7 @@ func _physics_process(delta):
 func _process(delta): 
 	_number_to_death()
 	_set_timer()
+	_if_is_dead()
 
 func _on_ball_detect_move_body_entered(body):
 	_rotate_ball()
@@ -42,8 +43,16 @@ func _on_ball_detect_move_body_entered(body):
 
 func _number_to_death():
 	if deathNum == 4:
-		animationPlayer.play("end")
+		_dead()
 
+func _dead():
+	animationPlayer.play("end")
+
+func _if_is_dead():
+	if Globals.dead == true:
+		_dead()
+	else:
+		pass
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "begin":

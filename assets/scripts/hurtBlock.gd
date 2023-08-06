@@ -31,6 +31,7 @@ func _ready():
 
 func _process(delta):
 	_setTimer()
+	_is_dead_true()
 
 func _setTimer():
 	if timerSwitch == false:
@@ -58,9 +59,16 @@ func _on_on_timer_timeout():
 	_placed()
 	awayTimer.start()
 
-
-func _on_away_timer_timeout():
-	#start like this now may remove it _debug
+func _dead():
 	collisionShape.disabled = true
 	animationPlayer.play("blockOut")
 
+func _on_away_timer_timeout():
+	#start like this now may remove it _debug
+	_dead()
+
+func _is_dead_true():
+	if Globals.dead == true:
+		_dead()
+	else:
+		pass

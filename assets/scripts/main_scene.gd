@@ -7,6 +7,7 @@ extends Node2D
 @onready var newHurtBlockTimer = $newHurtBlock
 @onready var newCoinBlockTimer = $newCoinBlock
 @onready var newSpinTimer = $newSpinBlock
+@onready var playerHolder = $playerHolder
 
 var mouseX = null
 var mouseY = null
@@ -27,6 +28,7 @@ var maxSpinHold = 1
 var harmSpinBlock = "res://scenes/hazards/around_the_screen.tscn"
 var pointSpinBlock #maybe later
 
+
 func _ready():
 	MusicController._play_song(1)
 	Globals._reset()
@@ -37,6 +39,7 @@ func _ready():
 func _process(delta):
 	_mouse_position()
 	_stop_song()#stops song at end
+#	_checkIfDead()
 	if Globals.dead == false:
 		_choosenBlock()
 		_block_track()
@@ -52,7 +55,7 @@ func _stop_song():
 	if Globals.dead == false:
 		pass
 	else:
-		MusicController._stop_music()
+		MusicController._pause_music()
 
 func _pause():
 	if Input.is_action_just_pressed("pause"):
@@ -169,3 +172,18 @@ func _mouse_position():
 func _on_restart_button_pressed():
 	get_tree().reload_current_scene()
 
+
+func _on_timer_timeout():
+	_add_new_ball()
+	Globals.spawnNewBallScreenOn = false
+
+func _add_new_ball():
+	var thing = "res://scenes/rigid_circle.tscn"
+	var load = load(thing)
+	var ball = load.instantiate()
+	playerHolder.add_child(ball)
+	Globals.dead = false
+	_spawn_hurt_block()
+	_spawn_point_block()
+	_spawn_spin_block()
+	MusicController._unpause_music()

@@ -15,7 +15,7 @@ func _final_score():
 	bestScoreLabel.set_text(str2)
 
 func _death_layer_on():
-	if Globals.dead == true:
+	if Globals.deathScreenOn == true:#changed from dead
 		visible = true
 	else:
 		visible = false

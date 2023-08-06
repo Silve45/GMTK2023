@@ -37,6 +37,7 @@ func _ready():
 
 func _process(delta):
 	_setTimer()
+	_is_dead_true()
 
 #func _get_score():
 #	return Globals.score
@@ -95,9 +96,7 @@ func _on_on_timer_timeout():
 
 func _on_away_timer_timeout():
 	#start like this now may remove it _debug
-	canPlaceShape.disabled = true
-	collisionShape.call_deferred("set_disabled", true) #disabled it
-	animationPlayer.play("blockOut")
+	_dead()
 
 
 func _on_hurt_area_body_entered(body):
@@ -107,3 +106,14 @@ func _on_hurt_area_body_entered(body):
 func _on_dead_timer_timeout():
 	queue_free()
 
+func _dead():
+	canPlaceShape.disabled = true
+	collisionShape.call_deferred("set_disabled", true) #disabled it
+	animationPlayer.play("blockOut")
+
+
+func _is_dead_true():
+	if Globals.dead == true:
+		_dead()
+	else:
+		pass

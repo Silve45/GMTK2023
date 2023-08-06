@@ -10,6 +10,10 @@ var controlsScreenOn = false
 var fullScreen = false
 var creditsScreenOn = false
 var storeScreenOn = false
+var lastChanceScreenOn = false
+var oneLastChance = false
+var deathScreenOn = false
+var spawnNewBallScreenOn = false #yes another one...
 
 #stuff for store
 #var ballColor = ""
@@ -67,6 +71,9 @@ func _reset():
 	maxHurtBlockCount = 3
 	dead = false
 	controlsScreenOn = false
+	deathScreenOn = false
+	lastChanceScreenOn = false
+	oneLastChance = false
 	get_tree().paused = false
 
 func _process(delta):

@@ -10,7 +10,7 @@ extends Control
 
 func _ready():
 	animationPlayer.play("RESET")
-	$"../rigidCircle".connect("sendSpeed", _speed_up)
+	$"../playerHolder/rigidCircle".connect("sendSpeed", _speed_up)
 
 func _process(delta):
 	var score = int(Globals.score)
@@ -27,7 +27,9 @@ func _on_timer_timeout():
 
 func _is_dead():
 	if Globals.dead == true:
-		timer.stop()
+		timer.set_paused(true)
+	else:
+		timer.set_paused(false)
 
 func _speed_up():#signal plays this
 	animationPlayer.play("labelFull")

@@ -68,6 +68,7 @@ buttonNum = 1
 [node name="CircleStoreButton2" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
 layout_mode = 2
 buttonNum = 2
+scoreNeeded = 100
 
 [node name="CircleStoreButton3" parent="ScrollContainer/HBoxContainer" instance=ExtResource("2_tv12t")]
 layout_mode = 2

@@ -9,7 +9,7 @@ func _ready():
 
 func _process(delta):
 	_pause_layer_on()
-	_pause()
+#	_pause()
 	_button_change()
 #	_hide_quit()
 
@@ -21,9 +21,9 @@ func _pause_layer_on():#I had a old way in godot 3,but this is cooler
 	else:
 		visible = false
 
-func _pause():
-	if Input.is_action_just_pressed("pause"):
-		get_tree().paused = true
+#func _pause():
+#	if Input.is_action_just_pressed("pause"):
+#		get_tree().paused = true
 
 func _on_resume_game_button_pressed():
 	get_tree().paused = false

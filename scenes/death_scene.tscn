@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://assets/scripts/deathScene.gd" id="1_55ydj"]
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="2_1n6d0"]
-[ext_resource type="Theme" uid="uid://ckxcu0bubxpay" path="res://resources/themes/greenButtonTheme.tres" id="3_51sym"]
 [ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="3_ch241"]
+[ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="3_mn3ny"]
 
 [node name="deathScene" type="Control"]
 layout_mode = 3
@@ -77,7 +77,7 @@ text = "Restart"
 
 [node name="storeButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("3_51sym")
+theme = ExtResource("3_mn3ny")
 theme_override_font_sizes/font_size = 75
 text = "Store"
 

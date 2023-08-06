@@ -39,3 +39,9 @@ func _mute_SFX():
 
 func _stop_music():
 	music.stop()
+
+func _pause_music():
+	music.set_stream_paused(true)
+
+func _unpause_music():
+	music.set_stream_paused(false)

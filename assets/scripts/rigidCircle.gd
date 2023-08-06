@@ -55,15 +55,36 @@ func _dead():
 	var deathSound = load("res://assets/soundEffects/breakSoundEffect.wav")
 	soundEffect.stream = deathSound
 	soundEffect.play()
-	$"../gameCamera"._apply_shake(100, 10)
+	$"../../gameCamera"._apply_shake(100, 10)
 	particles.emitting = true
 	particles.one_shot = true
 	sprite.visible = false
 	velocity = Vector2.ZERO
 	Globals.dead = true#sets dead here *changed
+#	Globals.deathScreenOn = true
+#	Globals.lastChanceScreenOn = true
+	_dead_or_last_chance()
 	deathTimer.start()#frees it
 	Globals._save()
 
+#	if OS.get_name() == "Windows" || OS.get_name() == "macOS":
+#		_controller(event, 1)
+#	if OS.get_name() == "Android" || OS.get_name() == "iOS":
+#		_controller(event, 2)
+
+func _dead_or_last_chance():
+	if Globals.oneLastChance == false:
+		Globals.lastChanceScreenOn = true
+	else:
+		Globals.deathScreenOn = true
+		#debug change this back to bottom code at end
+#	if OS.get_name() == "Android"|| OS.get_name() == "iOS":
+#		if Globals.oneLastChance == false:
+#			Globals.lastChanceScreenOn = true
+#		else:
+#			Globals.deathScreenOn = true
+#	else:
+#		Globals.deathScreenOn = true
 
 func _on_death_timer_timeout():
 	queue_free()
@@ -74,7 +95,7 @@ func _bounceSound():
 	var bounceSound = load("res://assets/soundEffects/ballHitOffBlock.wav")
 	soundEffect.stream = bounceSound
 	soundEffect.play()
-	$"../gameCamera"._apply_shake(0,0)
+	$"../../gameCamera"._apply_shake(0,0)
 
 func _on_sound_box_body_entered(body):
 	_bounceSound()

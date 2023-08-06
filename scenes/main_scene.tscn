@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://csi4qqxwojof8"]
+[gd_scene load_steps=13 format=3 uid="uid://csi4qqxwojof8"]
 
 [ext_resource type="Script" path="res://assets/scripts/gameCamera.gd" id="1_ay4xj"]
 [ext_resource type="Script" path="res://assets/scripts/main_scene.gd" id="1_q882a"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dy2mqxg2v1g2b" path="res://scenes/pause.tscn" id="5_b2kw1"]
 [ext_resource type="PackedScene" uid="uid://jy451i6j4lkk" path="res://scenes/death_scene.tscn" id="6_7gly6"]
 [ext_resource type="PackedScene" uid="uid://p67m4folw68" path="res://scenes/store.tscn" id="8_004dn"]
+[ext_resource type="PackedScene" uid="uid://c1ueau3u8vk35" path="res://scenes/last_chance.tscn" id="9_oh4ua"]
+[ext_resource type="Script" path="res://assets/scripts/spawnNewBall.gd" id="10_w0idy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1iwo6"]
 size = Vector2(1920, 98)
@@ -114,7 +116,9 @@ text = "x:y"
 [node name="spinBlockHolder" type="Node2D" parent="."]
 position = Vector2(54, 1012)
 
-[node name="rigidCircle" parent="." instance=ExtResource("4_r0jip")]
+[node name="playerHolder" type="Node2D" parent="."]
+
+[node name="rigidCircle" parent="playerHolder" instance=ExtResource("4_r0jip")]
 
 [node name="newHurtBlock" type="Timer" parent="."]
 one_shot = true
@@ -137,9 +141,55 @@ visible = false
 [node name="Store" parent="CanvasLayer" instance=ExtResource("8_004dn")]
 visible = false
 
+[node name="lastChance" parent="CanvasLayer" instance=ExtResource("9_oh4ua")]
+visible = false
+
+[node name="spawnNewBall" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_w0idy")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/spawnNewBall"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.882353)
+
+[node name="Label" type="Label" parent="CanvasLayer/spawnNewBall"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.972549, 0.45098, 0.894118, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 900
+text = "3"
+
+[node name="Timer" type="Timer" parent="CanvasLayer/spawnNewBall"]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="newHurtBlock" to="." method="_on_new_hurt_block_timeout"]
 [connection signal="timeout" from="newCoinBlock" to="." method="_on_new_coin_block_timeout"]
 [connection signal="timeout" from="newSpinBlock" to="." method="_on_new_spin_block_timeout"]
 [connection signal="pressed" from="CanvasLayer/Pause/VBoxContainer/restartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="timeout" from="CanvasLayer/spawnNewBall/Timer" to="." method="_on_timer_timeout"]
 
 [editable path="CanvasLayer/Pause"]
