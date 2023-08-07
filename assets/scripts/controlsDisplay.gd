@@ -32,7 +32,7 @@ func _process(delta):
 func _label_set_mobile():
 	match[pick]:
 		[0]:
-			label.set_text("Use the mouse to place blocks")
+			label.set_text("Double tap the screen to place blocks")
 		[1]:
 			label.set_text("The Blocks will change every press")
 		[2]:

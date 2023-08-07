@@ -4,11 +4,24 @@ extends Control
 @onready var muteMusic = $MuteButtons/MuteMusic
 @onready var muteSFX = $MuteButtons/MuteSfx
 @onready var soundEffect = $AudioStreamPlayer
+var timer = Timer.new()
 
 func _ready():
+#	_ios_tracking_transperancy()
 	MusicController._play_song(2)
 	muteButtons.visible = false
 	animationPlayer.play("beginningAnimation")
+	if OS.get_name() == "iOS":#make sure this works!
+		timer.set_one_shot(true)
+		timer.wait_time = 1
+		timer.connect("timeout", _ios_tracking_transperancy)
+		add_child(timer)
+		timer.start()
+
+func _ios_tracking_transperancy():
+	print(":)")
+	MobileAds.request_ready()
+	MobileAds.request_user_consent()
 
 
 func _on_play_game_button_pressed():
