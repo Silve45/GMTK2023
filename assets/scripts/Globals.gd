@@ -106,11 +106,17 @@ func _load():
 		var loaded_player_data = file.get_var()
 		bestScore = loaded_player_data.HIGHSCORE
 		ballColorNum = loaded_player_data.BALLCOLOR
+		MusicController.musicOn = loaded_player_data.MUSICON
+		MusicController.sfxOn = loaded_player_data.SFXON
 		file.close()
+	else:
+		_save()
 
 func create_player_data():
 	var player_dict = {
 		"HIGHSCORE" : bestScore,
-		"BALLCOLOR" : ballColorNum
+		"BALLCOLOR" : ballColorNum,
+		"MUSICON" : MusicController.musicOn,
+		"SFXON" : MusicController.sfxOn
 	}
 	return player_dict

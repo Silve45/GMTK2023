@@ -42,6 +42,7 @@ func _on_mute_music_pressed():
 		MusicController.musicOn = true
 	else:
 		MusicController.musicOn = false
+	Globals._save()
 
 
 func _on_mute_sfx_pressed():
@@ -49,6 +50,7 @@ func _on_mute_sfx_pressed():
 		MusicController.sfxOn = true
 	else:
 		MusicController.sfxOn = false
+	Globals._save()
 
 func _button_change():
 	if MusicController.musicOn == true:
