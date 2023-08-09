@@ -14,6 +14,7 @@ var lastChanceScreenOn = false
 var oneLastChance = false
 var deathScreenOn = false
 var spawnNewBallScreenOn = false #yes another one...
+var adIsLoaded = false 
 
 #stuff for store
 #var ballColor = ""

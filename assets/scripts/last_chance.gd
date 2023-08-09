@@ -12,7 +12,8 @@ var ad_wait_timer = Timer.new()
 
 
 func _ready():
-	is_ad_loaded(false)
+	if Globals.adIsLoaded == false:
+		is_ad_loaded(false)
 	_wait_for_ad()
 	MobileAds.connect("rewarded_ad_loaded",Callable(self,"_on_MobileAds_rewarded_ad_loaded"))
 	MobileAds.connect("rewarded_ad_closed",Callable(self,"_on_MobileAds_rewarded_ad_closed"))
@@ -23,13 +24,14 @@ func _ready():
 
 func _wait_for_ad():
 	ad_wait_timer.connect("timeout", wait_ad_done)
-	ad_wait_timer.wait_time = .1
+	ad_wait_timer.wait_time = .3
 	ad_wait_timer.one_shot = true
 	add_child(ad_wait_timer)
 	ad_wait_timer.start()
 
 func wait_ad_done():
 	MobileAds.load_rewarded()
+	print("ad should be loaded")
 #	is_ad_loaded(true)
 
 func _process(delta):
@@ -83,11 +85,14 @@ func _continue():#other stuff here as well
 
 func _on_MobileAds_rewarded_ad_loaded() -> void:
 	is_ad_loaded(true)
+	Globals.adIsLoaded = true
 	print(" ad is loaded fully :) ")
 
 
 func _on_MobileAds_rewarded_ad_closed() -> void:
-	MobileAds.load_rewarded()
+	Globals.adIsLoaded = false
+	is_ad_loaded(false)
+#	MobileAds.load_rewarded()
 
 func _on_texture_button_button_down():#put ad logic here and give last chance
 	is_ad_loaded(false)

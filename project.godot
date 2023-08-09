@@ -69,11 +69,11 @@ config={
 
 [application]
 
-config/name="GMTK game Jam 2023"
-run/main_scene="res://scenes/main_scene.tscn"
+config/name="You Are The Wall"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.0941176, 0.0941176, 0.0941176, 1)
-boot_splash/show_image=false
+boot_splash/image="res://AppIcons-2/1x1.png"
 config/icon="res://Windows Icon512.png"
 config/windows_native_icon="res://finalIcon.ico"
 
@@ -90,6 +90,7 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/size/initial_position_type=0
 window/stretch/mode="viewport"
+window/handheld/orientation=4
 mouse_cursor/custom_image="res://assets/sprites/targetCursor.PNG"
 
 [editor_plugins]

@@ -30,6 +30,7 @@ var pointSpinBlock #maybe later
 
 
 func _ready():
+#	print(OS.get_name())
 	MusicController._play_song(1)
 	Globals._reset()
 	_spawn_hurt_block()

@@ -19,7 +19,7 @@ func _ready():
 		timer.start()
 
 func _ios_tracking_transperancy():
-	print(":)")
+	print("ios user request")
 	MobileAds.request_ready()
 	MobileAds.request_user_consent()
 
