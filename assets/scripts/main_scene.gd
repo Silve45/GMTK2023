@@ -146,12 +146,12 @@ func _on_new_spin_block_timeout():
 		spinHold.add_child(where)
 	_spawn_spin_block()
 
-func _maxHurtBlock():#you may need to change these later _debug
-	if Globals.score >= 35:
+func _maxHurtBlock():
+	if Globals.score >= 50:
 		Globals.maxHurtBlockCount = 4
-	if Globals.score >=75:
+	if Globals.score >= 150:
 		Globals.maxHurtBlockCount = 5
-	if Globals.score >= 125:
+	if Globals.score >= 250:
 		Globals.maxHurtBlockCount = 6
 
 func _increment_block():

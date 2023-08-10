@@ -85,7 +85,7 @@ func _label_and_color(num):
 func _set_ball_color(color):
 	ball.modulate = color
 
-#set ballNum for everything --> debug you still need to save it
+#set ballNum for everything
 func _on_button_pressed():
 	_set_ball_num(buttonNum)
 	Globals._save()

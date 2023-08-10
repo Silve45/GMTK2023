@@ -73,11 +73,6 @@ func _dead():
 #		_controller(event, 2)
 
 func _dead_or_last_chance():
-#	if Globals.oneLastChance == false:
-#		Globals.lastChanceScreenOn = true
-#	else:
-#		Globals.deathScreenOn = true
-		#debug change this back to bottom code at end
 	if OS.get_name() == "Android"|| OS.get_name() == "iOS":
 		if Globals.oneLastChance == false:
 			Globals.lastChanceScreenOn = true

@@ -64,7 +64,6 @@ func _dead():
 	animationPlayer.play("blockOut")
 
 func _on_away_timer_timeout():
-	#start like this now may remove it _debug
 	_dead()
 
 func _is_dead_true():

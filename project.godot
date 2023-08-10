@@ -33,7 +33,7 @@ config={
 "general": {
 "is_enabled": true,
 "is_for_child_directed_treatment": false,
-"max_ad_content_rating": "PG"
+"max_ad_content_rating": "T"
 },
 "interstitial": {
 "unit_ids": {
@@ -48,10 +48,10 @@ config={
 "rewarded": {
 "unit_ids": {
 "Android": {
-"standard": "ca-app-pub-3940256099942544/5224354917"
+"standard": "ca-app-pub-1297674701708433/6684077517"
 },
 "iOS": {
-"standard": "ca-app-pub-3940256099942544/1712485313"
+"standard": "ca-app-pub-1297674701708433/5866917343"
 }
 }
 },
