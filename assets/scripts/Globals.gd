@@ -2,8 +2,10 @@ extends Node
 
 const save_file = "user://save.data"
 
+
 var score = int(0)
-var bestScore = int(0)
+var bestScore = int(0) #saved
+var controlSceme = 1 #saved
 var dead = false
 var maxHurtBlockCount = 3
 var controlsScreenOn = false
@@ -18,7 +20,7 @@ var adIsLoaded = false
 
 #stuff for store
 #var ballColor = ""
-var ballColorNum = 1 #default color
+var ballColorNum = 1 #default color #saved
 var incrementColorNum = 1
 var timerColor = "ffffff"
 @onready var changeColorTimer = $changeColorTimer
@@ -109,6 +111,7 @@ func _load():
 		ballColorNum = loaded_player_data.BALLCOLOR
 		MusicController.musicOn = loaded_player_data.MUSICON
 		MusicController.sfxOn = loaded_player_data.SFXON
+		controlSceme = loaded_player_data.CONTROL
 		file.close()
 	else:
 		_save()
@@ -118,6 +121,7 @@ func create_player_data():
 		"HIGHSCORE" : bestScore,
 		"BALLCOLOR" : ballColorNum,
 		"MUSICON" : MusicController.musicOn,
-		"SFXON" : MusicController.sfxOn
+		"SFXON" : MusicController.sfxOn,
+		"CONTROL": controlSceme
 	}
 	return player_dict

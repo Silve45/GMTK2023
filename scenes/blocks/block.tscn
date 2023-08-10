@@ -34,7 +34,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="canPlaceArea" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 128
 collision_mask = 37
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="canPlaceArea"]
@@ -46,3 +46,4 @@ volume_db = 24.0
 bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="input_event" from="canPlaceArea" to="." method="_on_can_place_area_input_event"]

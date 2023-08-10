@@ -60,3 +60,17 @@ func _canPlace():
 		$".".modulate = "d151ee67"
 
 
+
+
+func _on_can_place_area_input_event(viewport, event, shape_idx):
+	_control_sceme(event, Globals.controlSceme)
+
+func _control_sceme(event, whichOne):
+	if whichOne == 1:
+		if event.is_action_released("addClick") and placed == false:
+			print("go")
+			_placed()
+	if whichOne == 2:
+		if event is InputEventMouseButton and event.double_click:
+			_placed()
+			print("other go")

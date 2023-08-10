@@ -1,6 +1,7 @@
 extends Control
 @onready var label = $Label
 @onready var texture = $TextureRect
+@onready var controlButton = $Button
 
 var maxNum = 14
 var pick = 0
@@ -28,11 +29,15 @@ func _process(delta):
 		_icon_set_mobile()
 	_max_min()
 	_control_layer_on()
+	_change_button_face()
 
 func _label_set_mobile():
 	match[pick]:
 		[0]:
-			label.set_text("Double tap the screen to place blocks")
+			if Globals.controlSceme == 1:
+				label.set_text("Tap and Release to place blocks")
+			elif Globals.controlSceme ==2:
+				label.set_text("Double tap the screen to place blocks")
 		[1]:
 			label.set_text("The Blocks will change every press")
 		[2]:
@@ -87,7 +92,10 @@ func _icon_set():
 func _label_set():
 	match[pick]:
 		[0]:
-			label.set_text("Use the mouse to place blocks")
+			if Globals.controlSceme == 1:
+				label.set_text("Use the mouse to place blocks (release)")
+			elif Globals.controlSceme ==2:
+				label.set_text("Use the mouse to place blocks (double tap)")
 		[1]:
 			label.set_text("The Blocks will change every press")
 		[2]:
@@ -146,3 +154,16 @@ func _control_layer_on():
 		visible = true
 	else:
 		visible = false
+
+func _change_button_face():
+	if Globals.controlSceme == 1:
+		controlButton.text = "Release"
+	elif Globals.controlSceme == 2:
+		controlButton.text = "Double Tap"
+
+func _on_button_pressed():
+	if Globals.controlSceme == 1:
+		Globals.controlSceme = 2
+	elif Globals.controlSceme == 2:
+		Globals.controlSceme = 1
+	Globals._save()

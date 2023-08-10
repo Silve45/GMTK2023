@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d18sjlorv2qat"]
+[gd_scene load_steps=7 format=3 uid="uid://d18sjlorv2qat"]
 
 [ext_resource type="Script" path="res://assets/scripts/controlsDisplay.gd" id="1_g3l2j"]
 [ext_resource type="Theme" uid="uid://jdjqx2yaywmd" path="res://resources/themes/yellowButtonTheme.tres" id="2_7fwxq"]
 [ext_resource type="Theme" uid="uid://01qj0sypic1u" path="res://resources/themes/redButtonTheme.tres" id="2_w23hx"]
 [ext_resource type="Theme" uid="uid://ra71iimnbfmc" path="res://resources/themes/blueButtonTheme.tres" id="3_jx7il"]
 [ext_resource type="Texture2D" uid="uid://d104igbx1ev2f" path="res://icon.svg" id="4_1rw1v"]
+[ext_resource type="Theme" uid="uid://bkjd5fsif2jc4" path="res://resources/themes/purpleButtonTheme.tres" id="6_7m3m8"]
 
 [node name="controlsDisplay" type="Control"]
 layout_mode = 3
@@ -104,6 +105,44 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 texture = ExtResource("4_1rw1v")
 
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -926.0
+offset_top = -465.0
+offset_right = -506.0
+offset_bottom = -354.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_7m3m8")
+theme_override_font_sizes/font_size = 75
+text = "Double Tap"
+
+[node name="changeControls" type="Label" parent="."]
+self_modulate = Color(0.972549, 0.45098, 0.894118, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -490.0
+offset_top = -391.0
+offset_right = 130.0
+offset_bottom = -285.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.148353
+scale = Vector2(0.7, 0.7)
+theme_override_font_sizes/font_size = 75
+text = "- change controls"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="leftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="close Button" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="rightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

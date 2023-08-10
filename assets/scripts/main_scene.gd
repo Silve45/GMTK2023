@@ -80,19 +80,19 @@ func _block_track():
 		blockHold.add_child(add)
 		_increment_block()
 
-func _input(event):
-	if OS.get_name() == "Windows" || OS.get_name() == "macOS":
-		_controller(event, 1)
-	if OS.get_name() == "Android" || OS.get_name() == "iOS":
-		_controller(event, 2)
+#func _input(event):#debug
+#	if OS.get_name() == "Windows" || OS.get_name() == "macOS":
+#		_controller(event, 1)
+#	if OS.get_name() == "Android" || OS.get_name() == "iOS":
+#		_controller(event, 2)
 
-func _controller(event, whichOne):
-	if whichOne == 1:
-		if event.is_action_pressed("addClick") and add != null and Globals.dead == false:
-			add._placed()
-	if whichOne == 2:
-		if event is InputEventMouseButton and event.double_click and add != null and Globals.dead == false:
-			add._placed()
+#func _controller(event, whichOne):
+#	if whichOne == 1:
+#		if event.is_action_pressed("addClick") and add != null and Globals.dead == false:
+#			add._placed()
+#	if whichOne == 2:
+#		if event is InputEventMouseButton and event.double_click and add != null and Globals.dead == false:
+#			add._placed()
 
 func _spawn_hurt_block():
 	if Globals.dead == false:
