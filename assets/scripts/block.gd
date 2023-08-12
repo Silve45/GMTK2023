@@ -67,9 +67,12 @@ func _on_can_place_area_input_event(viewport, event, shape_idx):
 
 func _control_sceme(event, whichOne):
 	if whichOne == 1:
-		if event.is_action_released("addClick") and placed == false:
-			print("go")
-			_placed()
+		if OS.get_name() == "Android" || OS.get_name() == "iOS":
+			if event.is_action_released("addClick") and placed == false:
+				_placed()
+		elif OS.get_name() == "Web" || OS.get_name() == "Windows" || OS.get_name() == "macOS":
+			if event.is_action_released("addClick") and placed == false:
+				_placed()
 	if whichOne == 2:
 		if event is InputEventMouseButton and event.double_click:
 			_placed()
