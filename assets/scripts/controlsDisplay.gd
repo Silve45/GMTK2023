@@ -21,7 +21,7 @@ func _ready():
 	_set_max()
 
 func _process(delta):
-	if OS.get_name() == "Windows" || OS.get_name() == "macOS":
+	if OS.get_name() == "Windows" || OS.get_name() == "macOS" || OS.get_name() == "Web":
 		_label_set()
 		_icon_set()
 	if OS.get_name() == "Android" || OS.get_name() == "iOS":
@@ -93,9 +93,9 @@ func _label_set():
 	match[pick]:
 		[0]:
 			if Globals.controlSceme == 1:
-				label.set_text("Use the mouse to place blocks (release)")
+				label.set_text("Use the mouse to place blocks (click)")
 			elif Globals.controlSceme ==2:
-				label.set_text("Use the mouse to place blocks (double tap)")
+				label.set_text("Use the mouse to place blocks (double click)")
 		[1]:
 			label.set_text("The Blocks will change every press")
 		[2]:
@@ -126,7 +126,7 @@ func _label_set():
 			label.set_text("okay goodbye")
 
 func _set_max():
-	if OS.get_name() == "Windows" || OS.get_name() == "macOS":
+	if OS.get_name() == "Windows" || OS.get_name() == "macOS" || OS.get_name() == "Web":
 		maxNum = 14
 	elif OS.get_name() == "Android" || OS.get_name() == "iOS":
 		maxNum = 3
@@ -154,10 +154,13 @@ func _control_layer_on():
 		visible = true
 	else:
 		visible = false
-
+#controlButton.text = "Release"
 func _change_button_face():
 	if Globals.controlSceme == 1:
-		controlButton.text = "Release"
+		if OS.get_name() == "Android" || OS.get_name() == "iOS":
+			controlButton.text = "Release"
+		elif OS.get_name() == "Web" || OS.get_name() == "Windows" || OS.get_name() == "macOS":
+			controlButton.text = "Click"
 	elif Globals.controlSceme == 2:
 		controlButton.text = "Double Tap"
 
